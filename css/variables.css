@@ -1,0 +1,155 @@
+/* ===========================================================
+   SWATI ENTERPRISES — DESIGN TOKENS
+   Centralized variables for the entire design system.
+   =========================================================== */
+
+:root {
+  /* ---- Brand Palette ---- */
+  --primary:       #0F9D58;
+  --primary-dark:  #0B7A43;
+  --primary-light: #4CBE82;
+  --secondary:     #1976D2;
+  --secondary-dark:#125A9E;
+  --secondary-light:#5CA3E8;
+  --accent:        #4FC3F7;
+
+  /* Legacy aliases (used broadly, keeping for compatibility) */
+  --green:         var(--primary);
+  --green-dark:    var(--primary-dark);
+  --green-light:   var(--primary-light);
+  --blue:          var(--secondary);
+  --blue-dark:     var(--secondary-dark);
+  --blue-light:    var(--secondary-light);
+
+  /* ---- Tints ---- */
+  --mint-50:  #EFFBF4;
+  --mint-100: #E1F6EA;
+  --sky-50:   #EEF5FD;
+  --sky-100:  #E1EEFB;
+
+  /* ---- Neutrals ---- */
+  --ink:       #111827;
+  --ink-soft:  #2C4257;
+  --slate:     #5E7382;
+  --slate-2:   #6B7280;
+  --slate-3:   #8A9CAC;
+  --line:      #E6ECF1;
+  --line-2:    #EEF2F6;
+  --white:     #FFFFFF;
+  --bg:        #F8FAFC;
+  --bg-body:   #FFFFFF;
+
+  /* ---- Semantic Colors ---- */
+  --success: #22C55E;
+  --danger:  #EF4444;
+  --warning: #F59E0B;
+  --info:    #3B82F6;
+
+  /* Legacy aliases */
+  --amber:      var(--warning);
+  --amber-dark: #C9820D;
+  --coral:      var(--danger);
+
+  /* ---- Gradients ---- */
+  --grad-brand: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  --grad-soft:  linear-gradient(135deg, var(--mint-50) 0%, var(--sky-50) 100%);
+  --grad-hero:  radial-gradient(circle at 15% 20%, rgba(15,157,88,0.10), transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(25,118,210,0.12), transparent 50%);
+  --grad-accent: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+  --grad-success: linear-gradient(135deg, var(--success) 0%, var(--primary) 100%);
+  --grad-warm: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+
+  /* ---- Elevation (tinted, not flat grey) ---- */
+  --shadow-xs:  0 1px 2px rgba(20,36,52,0.06);
+  --shadow-sm:  0 4px 14px rgba(15,157,88,0.08), 0 1px 3px rgba(20,36,52,0.06);
+  --shadow-md:  0 10px 30px rgba(15,157,88,0.10), 0 2px 8px rgba(20,36,52,0.06);
+  --shadow-lg:  0 22px 50px rgba(25,118,210,0.14), 0 6px 16px rgba(20,36,52,0.08);
+  --shadow-xl:  0 32px 64px rgba(25,118,210,0.18), 0 8px 24px rgba(20,36,52,0.10);
+  --shadow-focus: 0 0 0 4px rgba(15,157,88,0.22);
+  --shadow-glow: 0 0 20px rgba(15,157,88,0.25);
+
+  /* ---- Radius ---- */
+  --r-xs:   6px;
+  --r-sm:   10px;
+  --r-md:   16px;
+  --r-lg:   20px;
+  --r-xl:   24px;
+  --r-2xl:  32px;
+  --r-pill: 999px;
+
+  /* ---- Typography ---- */
+  --font-display: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+  --font-body:    'Inter', 'Segoe UI', system-ui, sans-serif;
+  --fs-xs:   0.75rem;    /* 12px */
+  --fs-sm:   0.8125rem;  /* 13px */
+  --fs-base: 0.9375rem;  /* 15px */
+  --fs-md:   1rem;       /* 16px */
+  --fs-lg:   1.125rem;   /* 18px */
+  --fs-xl:   1.25rem;    /* 20px */
+  --fs-2xl:  1.5rem;     /* 24px */
+  --fs-3xl:  2rem;       /* 32px */
+  --fs-4xl:  2.5rem;     /* 40px */
+
+  /* ---- Layout ---- */
+  --maxw:       1240px;
+  --maxw-sm:    640px;
+  --maxw-md:    900px;
+  --nav-h:      78px;
+  --nav-h-shrink: 64px;
+
+  /* ---- Spacing ---- */
+  --sp-xs:  4px;
+  --sp-sm:  8px;
+  --sp-md:  16px;
+  --sp-lg:  24px;
+  --sp-xl:  32px;
+  --sp-2xl: 48px;
+  --sp-3xl: 64px;
+  --sp-4xl: 88px;
+
+  /* ---- Transitions ---- */
+  --transition:      220ms cubic-bezier(.4,0,.2,1);
+  --transition-slow: 400ms cubic-bezier(.4,0,.2,1);
+  --transition-fast: 150ms cubic-bezier(.4,0,.2,1);
+  --bounce:          500ms cubic-bezier(.34,1.56,.64,1);
+
+  /* ---- Glass ---- */
+  --glass-bg:     rgba(255,255,255,0.72);
+  --glass-border: rgba(255,255,255,0.30);
+  --glass-blur:   blur(18px) saturate(160%);
+
+  /* ---- Z-index scale ---- */
+  --z-dropdown: 50;
+  --z-sticky:   100;
+  --z-navbar:   200;
+  --z-modal:    900;
+  --z-toast:    999;
+  --z-loader:   9999;
+}
+
+/* ---- Dark Theme Overrides ---- */
+[data-theme="dark"] {
+  --ink:          #EAF2F0;
+  --ink-soft:     #CFE0DC;
+  --slate-2:      #9FB3C8;
+  --slate-3:      #7C93A8;
+  --line:         #24343F;
+  --line-2:       #1D2B34;
+  --white:        #14232B;
+  --bg:           #0F1B21;
+  --bg-body:      #0A1418;
+  --mint-50:      #16261F;
+  --mint-100:     #1B3328;
+  --sky-50:       #142430;
+  --sky-100:      #1A2D3E;
+
+  --glass-bg:     rgba(15,27,33,0.75);
+  --glass-border: rgba(255,255,255,0.08);
+
+  --shadow-xs:  0 1px 3px rgba(0,0,0,0.3);
+  --shadow-sm:  0 4px 14px rgba(0,0,0,0.35);
+  --shadow-md:  0 10px 30px rgba(0,0,0,0.4);
+  --shadow-lg:  0 22px 50px rgba(0,0,0,0.5);
+  --shadow-xl:  0 32px 64px rgba(0,0,0,0.6);
+  --shadow-glow: 0 0 20px rgba(15,157,88,0.15);
+}

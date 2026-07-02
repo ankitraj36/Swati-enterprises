@@ -1,0 +1,229 @@
+/* ===========================================================
+   SWATI ENTERPRISES — ANIMATIONS
+   Keyframes + animation utility classes
+   =========================================================== */
+
+/* ---- Fade ---- */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-down {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-left {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fade-in-right {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ---- Scale ---- */
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes scale-up {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+@keyframes zoom-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ---- Float ---- */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes float-x {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(8px); }
+}
+
+/* ---- Spin ---- */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes spin-slow-rev {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+/* ---- Marquee ---- */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ---- Pulse ---- */
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50%      { transform: scale(1.15); opacity: 0.9; }
+}
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(15,157,88,0.2); }
+  50%      { box-shadow: 0 0 24px rgba(15,157,88,0.45); }
+}
+
+/* ---- Shimmer (Skeleton Loading) ---- */
+@keyframes shimmer {
+  0%   { background-position: -400% 0; }
+  100% { background-position: 400% 0; }
+}
+
+/* ---- Gradient Animation ---- */
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---- Slide ---- */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+@keyframes slide-out-right {
+  from { transform: translateX(0); }
+  to   { transform: translateX(100%); }
+}
+@keyframes slide-in-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ---- Loader ---- */
+@keyframes loader-slide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(340%); }
+}
+
+/* ---- Toast ---- */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes toast-out {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(30px); }
+}
+
+/* ---- Badge / Bounce ---- */
+@keyframes badge-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40%  { transform: translateY(-12px); }
+  60%  { transform: translateY(-6px); }
+}
+
+/* ---- Ripple ---- */
+@keyframes ripple-out {
+  from { transform: scale(0); opacity: 0.5; }
+  to   { transform: scale(4); opacity: 0; }
+}
+
+/* ---- Confetti (success page) ---- */
+@keyframes confetti-fall {
+  0%   { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ---- Counter / Odometer ---- */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Typing cursor ---- */
+@keyframes blink-cursor {
+  0%, 100% { border-color: transparent; }
+  50%      { border-color: var(--primary); }
+}
+
+/* ---- Wiggle (attention) ---- */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  15%  { transform: rotate(-5deg); }
+  30%  { transform: rotate(5deg); }
+  45%  { transform: rotate(-3deg); }
+  60%  { transform: rotate(3deg); }
+  75%  { transform: rotate(-1deg); }
+}
+
+/* ---- Draw check (success) ---- */
+@keyframes draw-check {
+  0%   { stroke-dashoffset: 50; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* ===========================================================
+   ANIMATION UTILITY CLASSES
+   =========================================================== */
+
+.pop          { animation: badge-pop 0.35s ease; }
+.fade-in      { animation: fade-in 0.5s ease both; }
+.fade-in-up   { animation: fade-in-up 0.6s ease both; }
+.fade-in-left { animation: fade-in-left 0.6s ease both; }
+.fade-in-right{ animation: fade-in-right 0.6s ease both; }
+.scale-in     { animation: scale-in 0.4s ease both; }
+.bounce-in    { animation: bounce 0.8s ease both; }
+.wiggle       { animation: wiggle 0.6s ease; }
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* Page transition fade */
+body { animation: fade-in 0.45s ease; }
+
+/* ---- Reveal on scroll ---- */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in {
+  opacity: 1; transform: translateY(0);
+}
+.reveal.from-left {
+  transform: translateX(-24px);
+}
+.reveal.from-left.in {
+  transform: translateX(0);
+}
+.reveal.from-right {
+  transform: translateX(24px);
+}
+.reveal.from-right.in {
+  transform: translateX(0);
+}
+
+/* ---- Respect reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
