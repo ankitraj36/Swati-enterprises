@@ -1,28 +1,18 @@
 /* ===========================================================
    APP — shared site behavior across all pages
-   Scroll progress, sticky nav, theme, toasts, reveals,
-   FAQ, countdown, recently viewed, lazy loading
    =========================================================== */
 
 /* ---------- Page loader ---------- */
 window.addEventListener("load", () => {
   const loader = document.getElementById("pageLoader");
-  if (loader) setTimeout(() => loader.classList.add("hide"), 350);
+  if(loader){
+    setTimeout(() => loader.classList.add("hide"), 350);
+  }
 });
 
-/* ---------- Scroll progress bar ---------- */
-(function initScrollProgress() {
-  const bar = document.getElementById("scrollProgress");
-  if (!bar) return;
-  window.addEventListener("scroll", () => {
-    const winH = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = winH > 0 ? ((window.scrollY / winH) * 100) + "%" : "0%";
-  }, { passive: true });
-})();
-
-/* ---------- Sticky navbar shrink ---------- */
+/* ---------- Sticky navbar shadow ---------- */
 const navbarEl = document.querySelector(".navbar");
-if (navbarEl) {
+if(navbarEl){
   window.addEventListener("scroll", () => {
     navbarEl.classList.toggle("scrolled", window.scrollY > 8);
   }, { passive: true });
@@ -31,7 +21,7 @@ if (navbarEl) {
 /* ---------- Mobile nav toggle ---------- */
 const navToggle = document.getElementById("navToggle");
 const navLinks = document.getElementById("navLinks");
-if (navToggle && navLinks) {
+if(navToggle && navLinks){
   navToggle.addEventListener("click", () => {
     navToggle.classList.toggle("open");
     navLinks.classList.toggle("open");
@@ -45,18 +35,18 @@ if (navToggle && navLinks) {
 
 /* ---------- Theme toggle (dark / light) ---------- */
 const THEME_KEY = "swati_theme";
-function applyTheme(theme) {
+function applyTheme(theme){
   document.documentElement.setAttribute("data-theme", theme);
   document.body.setAttribute("data-theme", theme);
   localStorage.setItem(THEME_KEY, theme);
 }
-(function initTheme() {
+(function initTheme(){
   const saved = localStorage.getItem(THEME_KEY) || "light";
   applyTheme(saved);
 })();
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.getElementById("themeToggle");
-  if (toggle) {
+  if(toggle){
     toggle.addEventListener("click", () => {
       const current = localStorage.getItem(THEME_KEY) || "light";
       applyTheme(current === "light" ? "dark" : "light");
@@ -66,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ---------- Scroll to top ---------- */
 const scrollTopBtn = document.getElementById("scrollTopBtn");
-if (scrollTopBtn) {
+if(scrollTopBtn){
   window.addEventListener("scroll", () => {
     scrollTopBtn.classList.toggle("show", window.scrollY > 400);
   }, { passive: true });
@@ -74,9 +64,9 @@ if (scrollTopBtn) {
 }
 
 /* ---------- Toast notifications ---------- */
-function showToast(message, type = "info") {
+function showToast(message, type = "info"){
   let stack = document.getElementById("toastStack");
-  if (!stack) {
+  if(!stack){
     stack = document.createElement("div");
     stack.id = "toastStack";
     stack.className = "toast-stack";
@@ -86,7 +76,6 @@ function showToast(message, type = "info") {
   toast.className = `toast ${type}`;
   const icons = { success: "✓", error: "✕", info: "ℹ" };
   toast.innerHTML = `<span>${icons[type] || "ℹ"}</span><span>${message}</span>`;
-  toast.setAttribute("role", "alert");
   stack.appendChild(toast);
   setTimeout(() => {
     toast.style.opacity = "0";
@@ -95,45 +84,40 @@ function showToast(message, type = "info") {
   }, 3000);
 }
 
-/* ---------- Reveal on scroll (Intersection Observer) ---------- */
-function initRevealObserver() {
-  const revealEls = document.querySelectorAll(".reveal:not(.in)");
-  if ("IntersectionObserver" in window && revealEls.length) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in");
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
-    revealEls.forEach(el => io.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add("in"));
-  }
+/* ---------- Reveal on scroll ---------- */
+const revealEls = document.querySelectorAll(".reveal");
+if("IntersectionObserver" in window && revealEls.length){
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("in");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add("in"));
 }
-document.addEventListener("DOMContentLoaded", initRevealObserver);
-/* Re-init after dynamic content */
-function refreshReveals() { setTimeout(initRevealObserver, 100); }
 
 /* ---------- FAQ accordion ---------- */
 document.querySelectorAll(".faq-item").forEach(item => {
   const q = item.querySelector(".faq-q");
-  if (!q) return;
+  if(!q) return;
   q.addEventListener("click", () => {
     const wasOpen = item.classList.contains("open");
     item.parentElement.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
-    if (!wasOpen) item.classList.add("open");
+    if(!wasOpen) item.classList.add("open");
   });
 });
 
 /* ---------- Newsletter form ---------- */
 const newsletterForm = document.getElementById("newsletterForm");
-if (newsletterForm) {
+if(newsletterForm){
   newsletterForm.addEventListener("submit", e => {
     e.preventDefault();
     const input = newsletterForm.querySelector("input[type='email']");
-    if (input && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+    if(input && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)){
       showToast("Thanks for subscribing! Check your inbox soon.", "success");
       newsletterForm.reset();
     } else {
@@ -142,29 +126,58 @@ if (newsletterForm) {
   });
 }
 
-/* ---------- Countdown timer (Flash Sale) ---------- */
-function initCountdown(endTime) {
-  const els = {
-    hours: document.getElementById("cdHours"),
-    mins: document.getElementById("cdMins"),
-    secs: document.getElementById("cdSecs")
-  };
-  if (!els.hours) return;
-
-  function update() {
-    const now = Date.now();
-    let diff = Math.max(0, endTime - now);
-    const h = Math.floor(diff / 3600000); diff %= 3600000;
-    const m = Math.floor(diff / 60000); diff %= 60000;
-    const s = Math.floor(diff / 1000);
-    els.hours.textContent = String(h).padStart(2, '0');
-    els.mins.textContent = String(m).padStart(2, '0');
-    els.secs.textContent = String(s).padStart(2, '0');
-  }
-
-  update();
-  setInterval(update, 1000);
+/* ---------- Best sellers slider ---------- */
+function bindSlider(trackId, prevId, nextId){
+  const track = document.getElementById(trackId);
+  const prev = document.getElementById(prevId);
+  const next = document.getElementById(nextId);
+  if(!track) return;
+  const scrollAmt = () => track.clientWidth * 0.8;
+  if(prev) prev.addEventListener("click", () => track.scrollBy({ left: -scrollAmt(), behavior: "smooth" }));
+  if(next) next.addEventListener("click", () => track.scrollBy({ left: scrollAmt(), behavior: "smooth" }));
 }
+
+/* ---------- Quick View Modal ---------- */
+function openQuickView(id){
+  const p = getProductById(id);
+  if(!p) return;
+  const overlay = document.getElementById("quickViewOverlay");
+  const body = document.getElementById("quickViewBody");
+  if(!overlay || !body) return;
+  const stockClass = p.stock === "in" ? "in" : p.stock === "low" ? "low" : "out";
+  body.innerHTML = `
+    <div class="quickview-grid">
+      <div class="quickview-media">${productIconSVG(p.icon)}</div>
+      <div class="quickview-body">
+        <span class="product-cat">${p.category}</span>
+        <h2 style="margin:8px 0;">${p.name}</h2>
+        <div class="product-rating" style="margin-bottom:10px;"><span class="stars">${starRow(p.rating)}</span> ${p.rating} (${p.reviews} reviews)</div>
+        <div class="pd-price-row" style="margin:12px 0;">
+          <span class="price-now">${formatPrice(p.price)}</span>
+          ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ''}
+        </div>
+        <p style="color:var(--slate-2);font-size:.92rem;margin-bottom:14px;">${p.desc}</p>
+        <span class="stock-status ${stockClass}">${p.stockLabel}</span>
+        <div class="pd-actions">
+          <button class="btn btn-primary" data-add="${p.id}" ${p.stock==='out'?'disabled':''}>Add to Cart</button>
+          <a class="btn btn-outline" href="product.html?id=${p.id}">View Full Details</a>
+        </div>
+      </div>
+    </div>`;
+  overlay.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+function closeQuickView(){
+  const overlay = document.getElementById("quickViewOverlay");
+  if(overlay){ overlay.classList.remove("show"); document.body.style.overflow = ""; }
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("quickViewOverlay");
+  const closeBtn = document.getElementById("quickViewClose");
+  if(closeBtn) closeBtn.addEventListener("click", closeQuickView);
+  if(overlay) overlay.addEventListener("click", e => { if(e.target === overlay) closeQuickView(); });
+  document.addEventListener("keydown", e => { if(e.key === "Escape") closeQuickView(); });
+});
 
 /* ---------- Global delegated events: add-to-cart / wishlist / quickview ---------- */
 document.addEventListener("click", e => {
@@ -172,113 +185,80 @@ document.addEventListener("click", e => {
   const wishBtn = e.target.closest("[data-wish]");
   const qvBtn = e.target.closest("[data-quickview]");
 
-  if (addBtn) addToCart(Number(addBtn.dataset.add));
-  if (wishBtn) {
+  if(addBtn){ addToCart(Number(addBtn.dataset.add)); }
+  if(wishBtn){
     const active = toggleWishlist(Number(wishBtn.dataset.wish));
     wishBtn.classList.toggle("active", active);
-    const svg = wishBtn.querySelector("svg");
-    if (svg) svg.setAttribute("fill", active ? "currentColor" : "none");
+    wishBtn.querySelector("svg").setAttribute("fill", active ? "currentColor" : "none");
   }
-  if (qvBtn) openQuickView(Number(qvBtn.dataset.quickview));
+  if(qvBtn){ openQuickView(Number(qvBtn.dataset.quickview)); }
 });
 
-/* ---------- Product detail tabs ---------- */
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".pd-tab").forEach(tab => {
-    tab.addEventListener("click", () => {
-      const target = tab.dataset.tab;
-      tab.closest(".pd-tabs")?.querySelectorAll(".pd-tab").forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-      document.querySelectorAll(".pd-tab-panel").forEach(p => p.classList.remove("active"));
-      const panel = document.getElementById(target);
-      if (panel) panel.classList.add("active");
-    });
+/* ---------- Form validation helpers ---------- */
+function validateField(input){
+  const group = input.closest(".form-group");
+  if(!group) return true;
+  let valid = true;
+  if(input.hasAttribute("required") && !input.value.trim()) valid = false;
+  if(input.type === "email" && input.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) valid = false;
+  if(input.type === "tel" && input.value && !/^[0-9+\-\s]{7,15}$/.test(input.value)) valid = false;
+  if(input.dataset.match){
+    const other = document.getElementById(input.dataset.match);
+    if(other && input.value !== other.value) valid = false;
+  }
+  group.classList.toggle("error", !valid);
+  return valid;
+}
+function bindLiveValidation(form){
+  if(!form) return;
+  form.querySelectorAll("input, select, textarea").forEach(input => {
+    input.addEventListener("blur", () => validateField(input));
   });
-});
-
-/* ---------- Lazy loading images (IntersectionObserver) ---------- */
-function initLazyLoad() {
-  const imgs = document.querySelectorAll("img[data-src]");
-  if (!imgs.length) return;
-  if ("IntersectionObserver" in window) {
-    const imgObs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.removeAttribute("data-src");
-          img.classList.add("loaded");
-          imgObs.unobserve(img);
-        }
-      });
-    }, { rootMargin: "200px" });
-    imgs.forEach(img => imgObs.observe(img));
-  } else {
-    imgs.forEach(img => { img.src = img.dataset.src; img.classList.add("loaded"); });
-  }
 }
-document.addEventListener("DOMContentLoaded", initLazyLoad);
-
-/* ---------- Recently viewed section ---------- */
-function renderRecentlyViewed(containerId) {
-  const container = document.getElementById(containerId);
-  if (!container || typeof StorageManager === "undefined") return;
-
-  const viewed = StorageManager.getRecentlyViewed();
-  const products = viewed.map(id => getProductById(id)).filter(Boolean).slice(0, 6);
-  if (!products.length) { container.closest("section")?.remove(); return; }
-
-  container.innerHTML = products.map(productCardHTML).join("");
+function validateForm(form){
+  let allValid = true;
+  form.querySelectorAll("input, select, textarea").forEach(input => {
+    if(!validateField(input)) allValid = false;
+  });
+  return allValid;
 }
 
-/* ---------- Instagram gallery (placeholder SVGs) ---------- */
-function renderInstaGallery(containerId) {
-  const el = document.getElementById(containerId);
-  if (!el) return;
-  const colors = ["var(--mint-50)", "var(--sky-50)", "var(--mint-100)", "var(--sky-100)", "var(--mint-50)", "var(--sky-50)"];
-  const icons = ["capsule", "bottle", "jar", "device", "dropper", "tube"];
-  el.innerHTML = icons.map((icon, i) =>
-    `<div class="insta-item" style="background:${colors[i]};">${productIconSVG(icon)}</div>`
-  ).join("");
+/* ---------- Password strength (register page) ---------- */
+const pwInput = document.getElementById("regPassword");
+if(pwInput){
+  const bar = document.querySelector(".strength-bar i");
+  pwInput.addEventListener("input", () => {
+    let score = 0;
+    if(pwInput.value.length >= 6) score++;
+    if(/[A-Z]/.test(pwInput.value)) score++;
+    if(/[0-9]/.test(pwInput.value)) score++;
+    if(/[^A-Za-z0-9]/.test(pwInput.value)) score++;
+    const pct = (score / 4) * 100;
+    const colors = ["#EF5350", "#EF5350", "#F5A623", "#0F9D58", "#0F9D58"];
+    if(bar){ bar.style.width = pct + "%"; bar.style.background = colors[score]; }
+  });
 }
 
-/* ---------- Init forms on pages ---------- */
+/* ---------- Generic auth / contact / checkout form submit demo ---------- */
+function bindDemoForm(formId, successMsg, redirect){
+  const form = document.getElementById(formId);
+  if(!form) return;
+  bindLiveValidation(form);
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    if(!validateForm(form)){
+      showToast("Please fix the highlighted fields", "error");
+      return;
+    }
+    showToast(successMsg, "success");
+    if(redirect){ setTimeout(() => window.location.href = redirect, 900); }
+    else { form.reset(); }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  if (typeof bindDemoForm === "function") {
-    bindDemoForm("loginForm", "Welcome back! Login successful.", "index.html");
-    bindDemoForm("registerForm", "Account created successfully!", "index.html");
-    bindDemoForm("contactForm", "Message sent — our team will reach out shortly.");
-    bindDemoForm("checkoutForm", "Order placed successfully!", "success.html");
-  }
-
-  /* Password strength */
-  if (typeof initPasswordStrength === "function") {
-    initPasswordStrength("regPassword", ".strength-bar i", ".strength-label");
-  }
-
-  /* Password toggles */
-  if (typeof initPasswordToggle === "function") {
-    initPasswordToggle("loginPassword", "#loginPwToggle");
-    initPasswordToggle("regPassword", "#regPwToggle");
-  }
+  bindDemoForm("loginForm", "Welcome back! Login successful.", "index.html");
+  bindDemoForm("registerForm", "Account created successfully!", "index.html");
+  bindDemoForm("contactForm", "Message sent — our team will reach out shortly.");
+  bindDemoForm("checkoutForm", "Order placed successfully! Thank you for shopping with us.", "index.html");
 });
-
-/* ---------- Confetti (success page) ---------- */
-function fireConfetti() {
-  const container = document.getElementById("confettiContainer");
-  if (!container) return;
-  const colors = ["#0F9D58", "#1976D2", "#4FC3F7", "#F59E0B", "#EF4444", "#22C55E"];
-  for (let i = 0; i < 50; i++) {
-    const piece = document.createElement("div");
-    piece.className = "confetti-piece";
-    piece.style.left = Math.random() * 100 + "%";
-    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-    piece.style.animationDelay = Math.random() * 2 + "s";
-    piece.style.animationDuration = 2 + Math.random() * 2 + "s";
-    piece.style.width = 6 + Math.random() * 8 + "px";
-    piece.style.height = 6 + Math.random() * 8 + "px";
-    piece.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
-    container.appendChild(piece);
-  }
-  setTimeout(() => container.remove(), 5000);
-}
