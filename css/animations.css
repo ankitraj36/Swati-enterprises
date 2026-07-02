@@ -1,0 +1,64 @@
+/* ===========================================================
+   ANIMATIONS
+   =========================================================== */
+
+@keyframes fade-in{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes float-y{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
+}
+@keyframes spin-slow{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+@keyframes spin-slow-rev{
+  from{transform:rotate(360deg);}
+  to{transform:rotate(0deg);}
+}
+@keyframes marquee{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+@keyframes pulse-ring{
+  0%,100%{transform:scale(1);opacity:.6;}
+  50%{transform:scale(1.15);opacity:.9;}
+}
+@keyframes pulse-scale{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+}
+@keyframes loader-slide{
+  0%{transform:translateX(-100%);}
+  100%{transform:translateX(340%);}
+}
+@keyframes toast-in{
+  from{opacity:0;transform:translateX(30px);}
+  to{opacity:1;transform:translateX(0);}
+}
+@keyframes badge-pop{
+  0%{transform:scale(1);}
+  40%{transform:scale(1.4);}
+  100%{transform:scale(1);}
+}
+.pop{animation:badge-pop .35s ease;}
+
+.fade-in-up{animation:fade-in .6s ease both;}
+.delay-1{animation-delay:.1s;}
+.delay-2{animation-delay:.2s;}
+.delay-3{animation-delay:.3s;}
+
+/* Page transition fade */
+body{animation:fade-in .5s ease;}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:0.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.001ms !important;
+    scroll-behavior:auto !important;
+  }
+}
