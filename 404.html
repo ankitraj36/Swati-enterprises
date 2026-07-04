@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>404 – Page Not Found | Swati Enterprises</title>
+  <link rel="icon" href="images/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script type="module" src="js/app.js" defer></script>
+</head>
+<body>
+<div id="page-loader"><div class="loader-ring"></div></div>
+<div id="toast-container"></div>
+<div class="overlay" id="mobile-overlay"></div>
+<nav class="mobile-menu" id="mobile-menu"><div class="mobile-menu-header"><div class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div><span class="logo-name" style="font-size:var(--text-base);font-weight:800">Swati Enterprises</span></div><button id="mobile-menu-close" class="btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><a href="index.html" class="nav-link">🏠 Home</a></nav>
+<div class="top-bar"><div class="container"><div class="top-bar-inner"><span>🚚 Free delivery above ₹499</span></div></div></div>
+<header class="navbar" id="navbar"><div class="container"><div class="nav-inner"><a href="index.html" class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div><div class="logo-text"><span class="logo-name">Swati Enterprises</span><span class="logo-tag">Premium Pharmacy</span></div></a><div class="nav-actions" style="margin-left:auto"><button class="theme-toggle" id="theme-toggle-btn"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><button class="hamburger" id="hamburger-btn"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button></div></div></div></header>
+
+<main>
+  <div class="not-found-page">
+    <div style="max-width:600px;width:100%">
+      <div class="not-found-num animate-fade-in">404</div>
+      <div style="font-size:4rem;margin:var(--space-4) 0;animation:float 4s ease-in-out infinite">🔍</div>
+      <h1 style="font-size:var(--text-2xl);font-weight:800;color:var(--clr-text);margin-bottom:var(--space-3)" class="animate-fade-in delay-200">Oops! Page Not Found</h1>
+      <p style="color:var(--clr-text-muted);margin-bottom:var(--space-8)" class="animate-fade-in delay-300">
+        The page you are looking for might have been moved, deleted, or doesn't exist. Let us help you find what you need.
+      </p>
+
+      <!-- Quick Search -->
+      <div style="margin-bottom:var(--space-8)" class="animate-fade-in delay-400">
+        <form action="shop.html" style="display:flex;gap:var(--space-3);max-width:400px;margin:0 auto">
+          <input type="search" name="q" class="input" placeholder="Search for medicines..." style="flex:1">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+      </div>
+
+      <!-- Quick Links -->
+      <div style="display:flex;gap:var(--space-4);flex-wrap:wrap;justify-content:center;margin-bottom:var(--space-8)" class="animate-fade-in delay-500">
+        <a href="index.html" class="btn btn-primary">🏠 Home</a>
+        <a href="shop.html" class="btn btn-outline">🛍️ Shop All</a>
+        <a href="categories.html" class="btn btn-outline">📂 Categories</a>
+        <a href="contact.html" class="btn btn-ghost">📞 Contact Us</a>
+      </div>
+
+      <!-- Popular Categories -->
+      <div class="animate-fade-in delay-600">
+        <p style="font-size:var(--text-sm);font-weight:600;color:var(--clr-text-muted);margin-bottom:var(--space-4);text-transform:uppercase;letter-spacing:.08em">Popular Categories</p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);justify-content:center">
+          <a href="shop.html?cat=pain-relief" class="badge badge-primary" style="padding:6px 14px;font-size:var(--text-xs)">💊 Pain Relief</a>
+          <a href="shop.html?cat=vitamins" class="badge badge-secondary" style="padding:6px 14px;font-size:var(--text-xs)">💉 Vitamins</a>
+          <a href="shop.html?cat=skin-care" class="badge badge-amber" style="padding:6px 14px;font-size:var(--text-xs)">✨ Skin Care</a>
+          <a href="shop.html?cat=baby-care" class="badge badge-green" style="padding:6px 14px;font-size:var(--text-xs)">👶 Baby Care</a>
+          <a href="shop.html?cat=medical-equipment" class="badge badge-primary" style="padding:6px 14px;font-size:var(--text-xs)">🩺 Medical Devices</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer"><div class="footer-bottom"><div class="container"><div class="footer-bottom-inner"><p class="footer-copy">© 2025 Swati Enterprises. All rights reserved.</p></div></div></div></footer>
+</body>
+</html>

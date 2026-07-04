@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed! – Swati Enterprises</title>
+  <link rel="icon" href="images/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script type="module" src="js/app.js" defer></script>
+</head>
+<body>
+<div id="page-loader"><div class="loader-ring"></div></div>
+<div id="toast-container"></div>
+<button id="scroll-top" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></button>
+<div class="overlay" id="mobile-overlay"></div>
+<nav class="mobile-menu" id="mobile-menu"><div class="mobile-menu-header"><div class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div><span class="logo-name" style="font-size:var(--text-base);font-weight:800">Swati Enterprises</span></div><button id="mobile-menu-close" class="btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><a href="index.html" class="nav-link">🏠 Home</a></nav>
+<div class="top-bar"><div class="container"><div class="top-bar-inner"><span>🚚 Your order is on its way!</span></div></div></div>
+<header class="navbar" id="navbar"><div class="container"><div class="nav-inner"><a href="index.html" class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div><div class="logo-text"><span class="logo-name">Swati Enterprises</span><span class="logo-tag">Premium Pharmacy</span></div></a><div class="nav-actions" style="margin-left:auto"><button class="theme-toggle" id="theme-toggle-btn"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><button class="hamburger" id="hamburger-btn"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button></div></div></div></header>
+
+<main>
+  <div class="success-page">
+    <div class="success-card animate-fade-in-up">
+      <!-- Animated checkmark -->
+      <div class="success-icon">
+        <svg viewBox="0 0 52 52" style="width:50px;height:50px">
+          <circle cx="26" cy="26" r="25" fill="none" stroke="var(--clr-primary)" stroke-width="2" opacity="0.3"/>
+          <path fill="none" stroke="var(--clr-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M14.1 27.2l7.1 7.2 16.7-16.8" style="stroke-dasharray:100;stroke-dashoffset:100;animation:checkmark 0.6s ease 0.5s forwards"/>
+        </svg>
+      </div>
+
+      <h1 style="font-size:var(--text-3xl);font-weight:800;color:var(--clr-text);margin-bottom:var(--space-3)">Order Confirmed! 🎉</h1>
+      <p style="color:var(--clr-text-muted);margin-bottom:var(--space-6)">Thank you for choosing Swati Enterprises for your healthcare needs.</p>
+
+      <!-- Order Details -->
+      <div style="background:var(--clr-bg-alt);border-radius:var(--radius-xl);padding:var(--space-6);margin-bottom:var(--space-6);text-align:left">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4)">
+          <span style="font-size:var(--text-sm);font-weight:700;color:var(--clr-text)">Order ID</span>
+          <span style="font-size:var(--text-sm);font-weight:600;color:var(--clr-primary)" id="order-id">#SE000001</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-3)">
+          <span style="font-size:var(--text-sm);color:var(--clr-text-muted)">Order Date</span>
+          <span style="font-size:var(--text-sm);color:var(--clr-text)" id="order-date">Today</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-3)">
+          <span style="font-size:var(--text-sm);color:var(--clr-text-muted)">Order Total</span>
+          <span style="font-size:var(--text-base);font-weight:700;color:var(--clr-text)" id="order-total">₹0</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:var(--text-sm);color:var(--clr-text-muted)">Expected Delivery</span>
+          <span style="font-size:var(--text-sm);font-weight:600;color:var(--clr-primary)">2–4 Business Days</span>
+        </div>
+      </div>
+
+      <!-- Progress steps -->
+      <div style="margin-bottom:var(--space-8)">
+        <div style="display:flex;justify-content:space-between;position:relative;margin-bottom:var(--space-4)">
+          <div style="position:absolute;top:14px;left:12.5%;right:12.5%;height:2px;background:var(--clr-border)"></div>
+          <div style="position:absolute;top:14px;left:12.5%;width:25%;height:2px;background:var(--clr-primary)"></div>
+          <div style="text-align:center;flex:1">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--clr-primary);margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;position:relative;z-index:1">✓</div>
+            <div style="font-size:10px;color:var(--clr-primary);font-weight:600">Confirmed</div>
+          </div>
+          <div style="text-align:center;flex:1">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--clr-green-50);border:2px solid var(--clr-primary);margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:12px;position:relative;z-index:1">📦</div>
+            <div style="font-size:10px;color:var(--clr-text-muted)">Processing</div>
+          </div>
+          <div style="text-align:center;flex:1">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--clr-bg-alt);border:2px solid var(--clr-border);margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:12px;position:relative;z-index:1">🚚</div>
+            <div style="font-size:10px;color:var(--clr-text-muted)">Shipped</div>
+          </div>
+          <div style="text-align:center;flex:1">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--clr-bg-alt);border:2px solid var(--clr-border);margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:12px;position:relative;z-index:1">🏠</div>
+            <div style="font-size:10px;color:var(--clr-text-muted)">Delivered</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap">
+        <a href="shop.html" class="btn btn-primary btn-lg">Continue Shopping →</a>
+        <a href="index.html" class="btn btn-outline btn-lg">← Back to Home</a>
+      </div>
+
+      <p style="margin-top:var(--space-6);font-size:var(--text-xs);color:var(--clr-text-muted)">
+        📧 A confirmation email has been sent to your registered email address.<br>
+        📞 For support: 1800-123-4567 (Toll Free)
+      </p>
+    </div>
+  </div>
+</main>
+<footer class="footer"><div class="footer-bottom"><div class="container"><div class="footer-bottom-inner"><p class="footer-copy">© 2025 Swati Enterprises. All rights reserved.</p></div></div></div></footer>
+</body>
+</html>

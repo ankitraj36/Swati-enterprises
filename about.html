@@ -1,233 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us | Swati Enterprises</title>
-<meta name="description" content="Learn about Swati Enterprises — a trusted, licensed pharmacy delivering genuine medicines and healthcare essentials since our founding.">
-<meta name="theme-color" content="#0F9D58">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/animations.css">
-<link rel="stylesheet" href="css/responsive.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Swati Enterprises – India's trusted online pharmacy. Our story, mission, and team.">
+  <title>About Us – Swati Enterprises</title>
+  <link rel="icon" href="images/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script type="module" src="js/app.js" defer></script>
 </head>
-<body data-page="about">
-<a href="#main" class="skip-link">Skip to content</a>
+<body>
+<div id="page-loader"><div class="loader-ring"></div></div>
+<div id="toast-container"></div>
+<button id="scroll-top" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></button>
+<div class="overlay" id="mobile-overlay"></div>
+<nav class="mobile-menu" id="mobile-menu"><div class="mobile-menu-header"><div class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div><span class="logo-name" style="font-size:var(--text-base);font-weight:800">Swati Enterprises</span></div><button id="mobile-menu-close" class="btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><a href="index.html" class="nav-link">🏠 Home</a><a href="shop.html" class="nav-link">🛍️ Shop</a><a href="about.html" class="nav-link">ℹ️ About</a><a href="contact.html" class="nav-link">📞 Contact</a></nav>
+<div class="modal-overlay" id="quick-view-modal" role="dialog" aria-modal="true"><div class="modal"><div class="modal-header"><h2 style="font-size:var(--text-lg);font-weight:700">Quick View</h2><button id="modal-close-btn" class="modal-close-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body" id="modal-body"></div></div></div>
+<div class="top-bar"><div class="container"><div class="top-bar-inner"><span>🚚 Free delivery above ₹499 | 📞 1800-123-4567</span></div></div></div>
+<header class="navbar" id="navbar"><div class="container"><div class="nav-inner"><a href="index.html" class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div><div class="logo-text"><span class="logo-name">Swati Enterprises</span><span class="logo-tag">Premium Pharmacy</span></div></a><div class="nav-search hide-mobile"><form class="nav-search-form" id="nav-search-form"><input type="search" class="nav-search-input" id="nav-search-input" placeholder="Search..." autocomplete="off"><button type="submit" class="nav-search-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button></form><div class="search-suggestions" id="search-suggestions"></div></div><nav class="nav-menu"><a href="index.html" class="nav-link">Home</a><a href="shop.html" class="nav-link">Shop</a><a href="categories.html" class="nav-link">Categories</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Contact</a></nav><div class="nav-actions"><button class="theme-toggle" id="theme-toggle-btn"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="wishlist.html" class="nav-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="nav-badge wishlist-badge" style="display:none">0</span></a><a href="cart.html" class="nav-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="nav-badge cart-badge" style="display:none">0</span></a><button class="hamburger" id="hamburger-btn"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button></div></div></div></header>
 
-<div class="page-loader" id="pageLoader">
-  <div class="loader-logo"><svg class="logo-mark" width="60" height="60" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="logoGradL" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-      </linearGradient></defs>
-      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#logoGradL)" stroke-width="2.4" stroke-dasharray="4 6"/>
-      <circle cx="32" cy="32" r="23" fill="url(#logoGradL)"/>
-      <path d="M24 32 h16 M32 24 v16" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M20 40 q3 -8 8 -3" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
-    </svg></div>
-  <div class="loader-bar"><span></span></div>
-</div>
+<div class="page-header"><div class="container"><div class="page-header-inner"><h1 class="page-header-title">About Swati Enterprises</h1><nav class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">About Us</span></nav></div></div></div>
 
-<header class="navbar" id="navbar">
-  <div class="container nav-inner">
-    <a href="index.html" class="brand" aria-label="Swati Enterprises home">
-      <svg class="logo-mark" width="42" height="42" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="logoGradL" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-      </linearGradient></defs>
-      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#logoGradL)" stroke-width="2.4" stroke-dasharray="4 6"/>
-      <circle cx="32" cy="32" r="23" fill="url(#logoGradL)"/>
-      <path d="M24 32 h16 M32 24 v16" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M20 40 q3 -8 8 -3" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
-    </svg>
-      <span><span class="brand-name">Swati Enterprises</span><span class="brand-tag">Your Trusted Medical Store</span></span>
-    </a>
-    <nav aria-label="Primary">
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="categories.html">Categories</a></li>
-        <li><a href="shop.html?filter=offers">Offers</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="nav-search" role="search">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input type="text" id="navSearchInput" placeholder="Search medicines, vitamins..." aria-label="Search products" autocomplete="off">
-      <div class="search-suggest" id="navSearchSuggest"></div>
-    </div>
-    <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark / light mode">
-        <span class="knob">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.4 5.4 0 0 1 12 3z"/></svg>
-        </span>
-      </button>
-      <a href="wishlist-note.html" onclick="return false;" class="btn-icon icon-badge" aria-label="Wishlist" title="Wishlist">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-10-9.3C0.3 7.9 2.6 4 6.4 4c2 0 3.6 1 5.6 3 2-2 3.6-3 5.6-3 3.8 0 6.1 3.9 4.4 7.7C19.5 16.4 12 21 12 21z"/></svg>
-        <span class="count" id="wishIconBadge" data-wish-count style="display:none;">0</span>
-      </a>
-      <a href="cart.html" class="btn-icon icon-badge" aria-label="Cart" title="Cart">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-        <span class="count" id="cartIconBadge" data-cart-count style="display:none;">0</span>
-      </a>
-      <a href="login.html" class="btn btn-primary btn-sm">Login</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
-    </div>
-  </div>
-</header>
-
-<main id="main">
-
-<section class="page-banner">
-  <div class="container">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <span>About Us</span></div>
-    <h1>About Swati Enterprises</h1>
-  </div>
-</section>
-
-<section>
-  <div class="container two-col">
-    <div class="reveal">
-      <span class="eyebrow">Our Story</span>
-      <h2 style="margin-bottom:16px;">Care That Started With a Neighborhood Pharmacy</h2>
-      <p style="color:var(--slate-2);margin-bottom:16px;">Swati Enterprises began as a small family-run pharmacy with one simple goal: make genuine medicines easy to reach for every household. Today, that same commitment powers our online store — verified suppliers, licensed pharmacists, and a delivery network built for reliability.</p>
-      <p style="color:var(--slate-2);">We believe healthcare should feel personal, not transactional. That's why every order is checked, packed, and dispatched with the same care you'd expect walking into your neighborhood chemist.</p>
-    </div>
-    <div class="reveal">
-      <svg viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="210" cy="180" r="160" fill="url(#logoGrad2)" opacity="0.08"/>
-        <defs><linearGradient id="logoGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/></linearGradient></defs>
-        <rect x="90" y="120" width="240" height="160" rx="18" fill="#ffffff" stroke="#E6ECF1" stroke-width="2"/>
-        <rect x="110" y="140" width="90" height="60" rx="8" fill="#1976D2" opacity="0.9"/>
-        <rect x="210" y="140" width="100" height="26" rx="6" fill="#0F9D58" opacity="0.85"/>
-        <rect x="210" y="174" width="70" height="12" rx="4" fill="#E1F6EA"/>
-        <rect x="110" y="212" width="200" height="14" rx="4" fill="#E1EEFB"/>
-        <rect x="110" y="234" width="140" height="14" rx="4" fill="#E1EEFB"/>
-        <circle cx="300" cy="100" r="30" fill="#F5A623" opacity="0.85"/>
-        <path d="M300 88 v24 M288 100 h24" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<section class="bg-soft">
-  <div class="container">
-    <div class="stat-strip reveal">
-      <div><strong>12+</strong><span>Years of Service</span></div>
-      <div><strong>25,000+</strong><span>Families Served</span></div>
-      <div><strong>1,200+</strong><span>Products Listed</span></div>
-      <div><strong>98%</strong><span>On-Time Deliveries</span></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="section-head reveal"><span class="eyebrow">What We Stand For</span><h2>Our Values</h2></div>
-    <div class="value-grid reveal">
-      <div class="feature-card"><div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></div><h3>Integrity</h3><p>Only verified, authentic products reach our shelves and your door.</p></div>
-      <div class="feature-card"><div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2.1z"/></svg></div><h3>Compassion</h3><p>Every conversation with our support team starts with genuine care.</p></div>
-      <div class="feature-card"><div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div><h3>Reliability</h3><p>Fast, tracked delivery so essential medicines never arrive late.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="bg-soft">
-  <div class="container">
-    <div class="section-head reveal"><span class="eyebrow">Meet the Team</span><h2>Pharmacists You Can Trust</h2></div>
-    <div class="team-grid reveal">
-      <div class="team-card"><div class="team-avatar">SP</div><h4>Dr. Swati Prasad</h4><span>Founder &amp; Chief Pharmacist</span></div>
-      <div class="team-card"><div class="team-avatar">RK</div><h4>Rakesh Kumar</h4><span>Head of Operations</span></div>
-      <div class="team-card"><div class="team-avatar">NM</div><h4>Neha Mishra</h4><span>Clinical Pharmacist</span></div>
-      <div class="team-card"><div class="team-avatar">AT</div><h4>Aman Tiwari</h4><span>Customer Care Lead</span></div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="brand">
-          <svg class="logo-mark" width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="logoGradL" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-      </linearGradient></defs>
-      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#logoGradL)" stroke-width="2.4" stroke-dasharray="4 6"/>
-      <circle cx="32" cy="32" r="23" fill="url(#logoGradL)"/>
-      <path d="M24 32 h16 M32 24 v16" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M20 40 q3 -8 8 -3" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
-    </svg>
-          <span><span class="brand-name">Swati Enterprises</span><span class="brand-tag">Your Trusted Medical Store</span></span>
-        </a>
-        <p class="desc">Genuine medicines and healthcare essentials delivered to your doorstep, with pharmacist-verified quality on every order.</p>
-        <div class="social-row">
-          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23 4.9a9.3 9.3 0 0 1-2.6.7 4.5 4.5 0 0 0 2-2.5c-.9.5-1.9.9-2.9 1.1A4.5 4.5 0 0 0 11.9 8.5 12.8 12.8 0 0 1 2.7 3.8a4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.6v.1a4.5 4.5 0 0 0 3.6 4.4 4.5 4.5 0 0 1-2 .1 4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 19.5a12.8 12.8 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6A9.2 9.2 0 0 0 23 4.9z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23 12s0-3.4-.4-5a3 3 0 0 0-2.1-2C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.5.5a3 3 0 0 0-2.1 2C1 8.6 1 12 1 12s0 3.4.4 5a3 3 0 0 0 2.1 2c1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5a3 3 0 0 0 2.1-2c.4-1.6.4-5 .4-5zM9.8 15.5v-7l6 3.5z"/></svg></a>
+<main>
+  <!-- Mission Section -->
+  <section style="padding:var(--space-20) 0;background:var(--clr-surface)">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-16);align-items:center">
+        <div class="reveal-left">
+          <span class="section-tag">Our Story</span>
+          <h2 style="font-size:clamp(var(--text-2xl),4vw,var(--text-4xl));font-weight:800;color:var(--clr-text);margin:var(--space-4) 0;line-height:1.2">Healthcare Made Simple,<br><span style="background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Accessible & Affordable</span></h2>
+          <p style="color:var(--clr-text-muted);line-height:var(--leading-relaxed);margin-bottom:var(--space-4)">Swati Enterprises was founded with a single mission: to make quality healthcare accessible to every Indian household. What started as a small pharmacy in Mumbai in 2010 has grown into one of India's most trusted online healthcare platforms.</p>
+          <p style="color:var(--clr-text-muted);line-height:var(--leading-relaxed);margin-bottom:var(--space-8)">We believe that good health is a fundamental right, not a luxury. That's why we partner directly with manufacturers and authorized distributors to bring you genuine medicines at prices that don't break the bank.</p>
+          <div style="display:flex;gap:var(--space-4)">
+            <a href="shop.html" class="btn btn-primary btn-lg">Shop Now</a>
+            <a href="contact.html" class="btn btn-outline btn-lg">Contact Us</a>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div style="background:var(--grad-hero);border-radius:var(--radius-2xl);padding:var(--space-12);text-align:center;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:0;background:url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/svg%3E\")"></div>
+            <div style="position:relative;z-index:1">
+              <div style="font-size:5rem;margin-bottom:var(--space-4);animation:float 4s ease-in-out infinite">🏥</div>
+              <h3 style="font-size:var(--text-2xl);font-weight:800;color:#fff;margin-bottom:var(--space-3)">Est. 2010</h3>
+              <p style="color:rgba(255,255,255,0.8);font-size:var(--text-sm)">14+ years of trusted service</p>
+              <div style="display:flex;gap:var(--space-4);justify-content:center;margin-top:var(--space-6);flex-wrap:wrap">
+                <div style="background:rgba(255,255,255,0.12);border-radius:var(--radius-lg);padding:var(--space-4);min-width:100px">
+                  <div style="font-size:var(--text-2xl);font-weight:800;color:#fff">ISO</div>
+                  <div style="font-size:var(--text-xs);color:rgba(255,255,255,0.7)">Certified</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.12);border-radius:var(--radius-lg);padding:var(--space-4);min-width:100px">
+                  <div style="font-size:var(--text-2xl);font-weight:800;color:#fff">CDSCO</div>
+                  <div style="font-size:var(--text-xs);color:rgba(255,255,255,0.7)">Licensed</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="categories.html">Categories</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>My Account</h4>
-        <ul class="footer-links">
-          <li><a href="login.html">Login</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="cart.html">My Cart</a></li>
-          <li><a href="checkout.html">Checkout</a></li>
-          <li><a href="contact.html">Track Order</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Get in Touch</h4>
-        <ul class="footer-contact">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 221 Wellness Avenue, Patna, Bihar 800001, India</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2.1z"/></svg> +91 98765 43210</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg> care@swatienterprises.in</li>
-        </ul>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section style="padding:var(--space-16) 0;background:var(--clr-bg-alt)">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card reveal"><div class="stat-num" data-count="25" data-suffix="L+">0</div><p class="stat-label">Happy Customers</p></div>
+        <div class="stat-card reveal delay-100"><div class="stat-num" data-count="50000" data-suffix="+">0</div><p class="stat-label">Products Listed</p></div>
+        <div class="stat-card reveal delay-200"><div class="stat-num" data-count="500" data-suffix="+">0</div><p class="stat-label">Cities Served</p></div>
+        <div class="stat-card reveal delay-300"><div class="stat-num" data-count="99" data-suffix="%">0</div><p class="stat-label">Customer Satisfaction</p></div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Swati Enterprises. All rights reserved.</span>
-      <div class="legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms &amp; Conditions</a>
-        <a href="#">Shipping Policy</a>
+  </section>
+
+  <!-- Values -->
+  <section style="padding:var(--space-20) 0">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Values</span>
+        <h2 class="section-title">What Drives Us</h2>
+        <p class="section-subtitle">The principles that guide every decision we make</p>
+      </div>
+      <div class="grid-3 gap-6">
+        <div class="card" style="padding:var(--space-8);text-align:center" class="reveal">
+          <div style="font-size:3rem;margin-bottom:var(--space-4)">🔬</div>
+          <h3 style="font-size:var(--text-lg);font-weight:700;margin-bottom:var(--space-3)">Authenticity</h3>
+          <p style="color:var(--clr-text-muted);font-size:var(--text-sm);line-height:var(--leading-relaxed)">Every product on our platform undergoes rigorous authenticity checks. We source only from licensed manufacturers and authorized distributors.</p>
+        </div>
+        <div class="card" style="padding:var(--space-8);text-align:center">
+          <div style="font-size:3rem;margin-bottom:var(--space-4)">💚</div>
+          <h3 style="font-size:var(--text-lg);font-weight:700;margin-bottom:var(--space-3)">Compassion</h3>
+          <p style="color:var(--clr-text-muted);font-size:var(--text-sm);line-height:var(--leading-relaxed)">Healthcare affects lives. We approach every customer interaction with empathy, care, and the genuine desire to help them stay healthy.</p>
+        </div>
+        <div class="card" style="padding:var(--space-8);text-align:center">
+          <div style="font-size:3rem;margin-bottom:var(--space-4)">⚡</div>
+          <h3 style="font-size:var(--text-lg);font-weight:700;margin-bottom:var(--space-3)">Speed</h3>
+          <p style="color:var(--clr-text-muted);font-size:var(--text-sm);line-height:var(--leading-relaxed)">When you need medicines, you need them fast. Our express delivery network ensures your medicines reach you as quickly as possible.</p>
+        </div>
+        <div class="card" style="padding:var(--space-8);text-align:center">
+          <div style="font-size:3rem;margin-bottom:var(--space-4)">🏆</div>
+          <h3 style="font-size:var(--text-lg);font-weight:700;margin-bottom:var(--space-3)">Quality</h3>
+          <p style="color:var(--clr-text-muted);font-size:var(--text-sm);line-height:var(--leading-relaxed)">We never compromise on quality. ISO-certified processes and pharmacist-led quality control ensure you always get the best.</p>
+        </div>
+        <div class="card" style="padding:var(--space-8);text-align:center">
+          <div style="font-size:3rem;margin-bottom:var(--space-4)">💰</div>
+          <h3 style="font-size:var(--text-lg);font-weight:700;margin-bottom:var(--space-3)">Affordability</h3>
+          <p style="color:var(--clr-text-muted);font-size:var(--text-sm);line-height:var(--leading-relaxed)">Healthcare shouldn't be a luxury. We negotiate the best prices and pass the savings directly to our customers.</p>
+        </div>
+        <div class="card" style="padding:var(--space-8);text-align:center">
+          <div style="font-size:3rem;margin-bottom:var(--space-4)">🔒</div>
+          <h3 style="font-size:var(--text-lg);font-weight:700;margin-bottom:var(--space-3)">Privacy</h3>
+          <p style="color:var(--clr-text-muted);font-size:var(--text-sm);line-height:var(--leading-relaxed)">Your health data is personal and sensitive. We maintain the highest standards of data privacy and security at every step.</p>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<div class="modal-overlay" id="quickViewOverlay">
-  <div class="modal-box">
-    <button class="modal-close" id="quickViewClose" aria-label="Close quick view">✕</button>
-    <div id="quickViewBody"></div>
-  </div>
-</div>
+  <!-- CTA -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-inner">
+        <h2 class="newsletter-title">Ready to Experience Better Healthcare?</h2>
+        <p class="newsletter-desc">Join 25 lakh+ customers who trust Swati Enterprises for their healthcare needs.</p>
+        <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap">
+          <a href="shop.html" class="btn btn-outline-white btn-xl">Shop Now →</a>
+          <a href="contact.html" class="btn btn-outline-white btn-xl">Talk to Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-<div class="toast-stack" id="toastStack"></div>
-<button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
-
-<script src="js/products.js"></script>
-<script src="js/wishlist.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/search.js"></script>
-<script src="js/app.js"></script>
-
+<footer class="footer"><div class="footer-bottom"><div class="container"><div class="footer-bottom-inner"><p class="footer-copy">© 2025 Swati Enterprises. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div></div></div></div></footer>
 </body>
 </html>

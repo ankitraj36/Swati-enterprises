@@ -1,422 +1,670 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home | Swati Enterprises</title>
-<meta name="description" content="Swati Enterprises is your trusted online pharmacy for genuine medicines, vitamins, and healthcare essentials with fast, reliable delivery.">
-<meta name="theme-color" content="#0F9D58">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/animations.css">
-<link rel="stylesheet" href="css/responsive.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Swati Enterprises – Premium online pharmacy in India. Authentic medicines, vitamins, health products delivered fast. 50,000+ products, genuine quality.">
+  <meta name="keywords" content="online pharmacy, buy medicines online, health products, vitamins, Swati Enterprises">
+  <meta name="author" content="Swati Enterprises">
+  <meta property="og:title" content="Swati Enterprises – Premium Online Pharmacy">
+  <meta property="og:description"
+    content="India's most trusted online pharmacy. Genuine medicines, fast delivery, best prices.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Swati Enterprises – Premium Online Pharmacy</title>
+  <link rel="icon" href="images/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script type="module" src="js/app.js" defer></script>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Pharmacy",
+    "name": "Swati Enterprises",
+    "description": "Premium online pharmacy with authentic medicines and health products",
+    "url": "https://swati-enterprises.com",
+    "telephone": "+91-9162607679",
+    "address": { "@type": "PostalAddress", "addressCountry": "IN" }
+  }
+  </script>
 </head>
-<body data-page="home">
-<a href="#main" class="skip-link">Skip to content</a>
 
-<div class="page-loader" id="pageLoader">
-  <div class="loader-logo"><svg class="logo-mark" width="60" height="60" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="logoGradL" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-      </linearGradient></defs>
-      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#logoGradL)" stroke-width="2.4" stroke-dasharray="4 6"/>
-      <circle cx="32" cy="32" r="23" fill="url(#logoGradL)"/>
-      <path d="M24 32 h16 M32 24 v16" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M20 40 q3 -8 8 -3" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
-    </svg></div>
-  <div class="loader-bar"><span></span></div>
-</div>
+<body>
 
-<header class="navbar" id="navbar">
-  <div class="container nav-inner">
-    <a href="index.html" class="brand" aria-label="Swati Enterprises home">
-      <svg class="logo-mark" width="42" height="42" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="logoGradL" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-      </linearGradient></defs>
-      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#logoGradL)" stroke-width="2.4" stroke-dasharray="4 6"/>
-      <circle cx="32" cy="32" r="23" fill="url(#logoGradL)"/>
-      <path d="M24 32 h16 M32 24 v16" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M20 40 q3 -8 8 -3" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
+  <!-- Page Loader -->
+  <div id="page-loader" role="status" aria-label="Loading">
+    <div class="loader-ring"></div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Scroll to Top -->
+  <button id="scroll-top" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15" />
     </svg>
-      <span><span class="brand-name">Swati Enterprises</span><span class="brand-tag">Your Trusted Medical Store</span></span>
-    </a>
-    <nav aria-label="Primary">
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="categories.html">Categories</a></li>
-        <li><a href="shop.html?filter=offers">Offers</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="nav-search" role="search">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input type="text" id="navSearchInput" placeholder="Search medicines, vitamins..." aria-label="Search products" autocomplete="off">
-      <div class="search-suggest" id="navSearchSuggest"></div>
-    </div>
-    <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark / light mode">
-        <span class="knob">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.4 5.4 0 0 1 12 3z"/></svg>
-        </span>
+  </button>
+
+  <!-- Mobile Overlay -->
+  <div class="overlay" id="mobile-overlay" aria-hidden="true"></div>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+    <div class="mobile-menu-header">
+      <div class="logo">
+        <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+          </svg></div>
+        <span class="logo-name">Swati Enterprises</span>
+      </div>
+      <button id="mobile-menu-close" class="btn-icon" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
       </button>
-      <a href="wishlist-note.html" onclick="return false;" class="btn-icon icon-badge" aria-label="Wishlist" title="Wishlist">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-10-9.3C0.3 7.9 2.6 4 6.4 4c2 0 3.6 1 5.6 3 2-2 3.6-3 5.6-3 3.8 0 6.1 3.9 4.4 7.7C19.5 16.4 12 21 12 21z"/></svg>
-        <span class="count" id="wishIconBadge" data-wish-count style="display:none;">0</span>
-      </a>
-      <a href="cart.html" class="btn-icon icon-badge" aria-label="Cart" title="Cart">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-        <span class="count" id="cartIconBadge" data-cart-count style="display:none;">0</span>
-      </a>
-      <a href="login.html" class="btn btn-primary btn-sm">Login</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+    <a href="index.html" class="nav-link">🏠 Home</a>
+    <a href="shop.html" class="nav-link">🛍️ Shop</a>
+    <a href="categories.html" class="nav-link">📂 Categories</a>
+    <a href="about.html" class="nav-link">ℹ️ About Us</a>
+    <a href="contact.html" class="nav-link">📞 Contact</a>
+    <hr class="divider" style="margin:16px 0">
+    <a href="login.html" class="btn btn-outline w-full" style="justify-content:center;margin-bottom:12px">Login</a>
+    <a href="register.html" class="btn btn-primary w-full" style="justify-content:center">Register</a>
+  </nav>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quick-view-modal" role="dialog" aria-modal="true" aria-label="Product quick view">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 style="font-size:var(--text-lg);font-weight:700">Quick View</h2>
+        <button id="modal-close-btn" class="modal-close-btn" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
     </div>
   </div>
-</header>
 
-<main id="main">
-
-<section class="hero">
-  <div class="hero-ring r1"></div>
-  <div class="hero-ring r2"></div>
-  <div class="container hero-grid">
-    <div class="hero-copy reveal">
-      <span class="eyebrow">🛡️ 100% Genuine &amp; Licensed Pharmacy</span>
-      <h1>Trusted Medicines for <span class="grad-text">Every Family</span></h1>
-      <p>Order genuine medicines, healthcare products, and wellness essentials with confidence. Verified by licensed pharmacists, delivered to your door.</p>
-      <div class="hero-cta">
-        <a href="shop.html" class="btn btn-primary">Shop Now</a>
-        <a href="categories.html" class="btn btn-outline">Explore Categories</a>
-      </div>
-      <div class="hero-stats">
-        <div><strong>25k+</strong><span>Happy Families</span></div>
-        <div><strong>1,200+</strong><span>Medicines Listed</span></div>
-        <div><strong>4.8/5</strong><span>Customer Rating</span></div>
-        <div><strong>24/7</strong><span>Pharmacist Support</span></div>
-      </div>
-    </div>
-    <div class="hero-visual reveal">
-      <svg viewBox="0 0 480 440" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="heroG1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-          </linearGradient>
-        </defs>
-        <circle cx="240" cy="220" r="190" fill="url(#heroG1)" opacity="0.08"/>
-        <rect x="120" y="230" width="120" height="150" rx="14" fill="#1976D2"/>
-        <rect x="136" y="250" width="88" height="16" rx="4" fill="#ffffff" opacity="0.85"/>
-        <rect x="136" y="276" width="60" height="10" rx="3" fill="#ffffff" opacity="0.55"/>
-        <circle cx="180" cy="330" r="26" fill="#ffffff" opacity="0.9"/>
-        <path d="M180 318 v24 M168 330 h24" stroke="#0F9D58" stroke-width="5" stroke-linecap="round"/>
-        <rect x="250" y="190" width="110" height="190" rx="16" fill="#0F9D58"/>
-        <rect x="264" y="212" width="82" height="14" rx="4" fill="#ffffff" opacity="0.85"/>
-        <rect x="264" y="236" width="50" height="9" rx="3" fill="#ffffff" opacity="0.5"/>
-        <rect x="264" y="330" width="82" height="26" rx="6" fill="#ffffff" opacity="0.9"/>
-        <circle cx="330" cy="150" r="40" fill="#ffffff" stroke="#1976D2" stroke-width="3"/>
-        <path d="M330 132 v36 M312 150 h36" stroke="#0F9D58" stroke-width="6" stroke-linecap="round"/>
-        <ellipse cx="150" cy="150" rx="34" ry="20" fill="#5CA3E8"/>
-        <ellipse cx="150" cy="150" rx="34" ry="20" fill="none" stroke="#1976D2" stroke-width="2"/>
-        <circle cx="230" cy="120" r="10" fill="#4CBE82"/>
-        <circle cx="380" cy="260" r="14" fill="#F5A623" opacity="0.85"/>
-        <circle cx="90" cy="260" r="10" fill="#1976D2" opacity="0.6"/>
-      </svg>
-      <div class="float-card f1"><span class="dot"></span> Verified Pharmacy</div>
-      <div class="float-card f2"><span class="dot blue"></span> Delivered in 45 mins</div>
-    </div>
-  </div>
-</section>
-
-<div class="trust-strip">
-  <div class="container">
-    <div class="trust-track">
-      <span>✓ FDA Registered Suppliers</span><span>✓ Licensed Pharmacists On Call</span><span>✓ Cold-Chain Verified Storage</span>
-      <span>✓ 100% Authentic Medicines</span><span>✓ Secure Encrypted Payments</span><span>✓ Same-Day City Delivery</span>
-      <span>✓ FDA Registered Suppliers</span><span>✓ Licensed Pharmacists On Call</span><span>✓ Cold-Chain Verified Storage</span>
-      <span>✓ 100% Authentic Medicines</span><span>✓ Secure Encrypted Payments</span><span>✓ Same-Day City Delivery</span>
-    </div>
-  </div>
-</div>
-
-<section>
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Browse</span>
-      <h2>Shop by Category</h2>
-      <p>Everything your family needs, organized for quick and easy ordering.</p>
-    </div>
-    <div class="cat-grid" id="catGridHome"></div>
-  </div>
-</section>
-
-<section class="bg-soft">
-  <div class="container">
-    <div class="divider-row reveal">
-      <div class="section-head left" style="margin:0;">
-        <span class="eyebrow">Handpicked</span>
-        <h2>Featured Products</h2>
-      </div>
-      <a href="shop.html" class="btn btn-outline">View All Products</a>
-    </div>
-    <div class="product-grid" id="featuredGrid"></div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="divider-row reveal">
-      <div class="section-head left" style="margin:0;">
-        <span class="eyebrow">Loved by customers</span>
-        <h2>Best Sellers</h2>
-      </div>
-      <div class="slider-nav">
-        <button class="btn-icon" id="bsPrev" aria-label="Previous">‹</button>
-        <button class="btn-icon" id="bsNext" aria-label="Next">›</button>
-      </div>
-    </div>
-    <div class="slider-wrap">
-      <div class="slider-track" id="bestSellerTrack"></div>
-    </div>
-  </div>
-</section>
-
-<section class="bg-soft">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">This week</span>
-      <h2>Special Offers</h2>
-      <p>Limited-time savings on your family's healthcare essentials.</p>
-    </div>
-    <div class="offer-grid reveal">
-      <div class="offer-banner b1">
-        <h3>Flat 25% Off on Vitamins</h3>
-        <p>Build daily immunity with our top-rated multivitamin range.</p>
-        <a href="shop.html" class="btn">Shop Vitamins</a>
-      </div>
-      <div class="offer-banner b2">
-        <h3>Free Delivery Above ₹999</h3>
-        <p>No delivery charges on qualifying healthcare orders, every day.</p>
-        <a href="shop.html" class="btn">Start Shopping</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Why Swati Enterprises</span>
-      <h2>Healthcare You Can Rely On</h2>
-      <p>Every order is backed by our commitment to authenticity, speed, and care.</p>
-    </div>
-    <div class="feature-grid reveal">
-      <div class="feature-card">
-        <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Genuine Medicines</h3>
-        <p>Sourced directly from licensed manufacturers and verified at every step.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div>
-        <h3>Fast Delivery</h3>
-        <p>Same-day dispatch and express delivery slots for urgent healthcare needs.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
-        <h3>Secure Payment</h3>
-        <p>Encrypted checkout with multiple trusted payment options.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2.1z"/></svg></div>
-        <h3>24/7 Customer Support</h3>
-        <p>Our pharmacist-trained team is available around the clock to help.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></div>
-        <h3>Trusted Pharmacy</h3>
-        <p>State-licensed and audited for safe, compliant medicine dispensing.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg></div>
-        <h3>Easy Returns</h3>
-        <p>Hassle-free returns and refunds on eligible healthcare products.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="bg-soft">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Testimonials</span>
-      <h2>What Our Customers Say</h2>
-    </div>
-    <div class="testi-grid reveal">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Ordering my mother's monthly medicines has never been easier. Genuine products and the delivery is always on time."</p>
-        <div class="testi-user"><div class="testi-avatar">AR</div><div><strong>Ananya Rao</strong><span>Verified Buyer, Patna</span></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p>"The quick view and easy checkout saved me so much time. Customer support helped me pick the right vitamin brand too."</p>
-        <div class="testi-user"><div class="testi-avatar">VK</div><div><strong>Vikram Kumar</strong><span>Verified Buyer, Delhi</span></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★☆</div>
-        <p>"Great prices on diabetes care essentials. I appreciate the transparent stock status before I order."</p>
-        <div class="testi-user"><div class="testi-avatar">SP</div><div><strong>Sunita Prasad</strong><span>Verified Buyer, Lucknow</span></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">FAQ</span>
-      <h2>Frequently Asked Questions</h2>
-    </div>
-    <div class="faq-list reveal">
-      <div class="faq-item">
-        <button class="faq-q">Is a prescription required for all medicines? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Prescription-only medicines require a valid upload during checkout. Over-the-counter wellness products can be ordered freely.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">How fast is delivery? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Most orders are delivered within 45 minutes to 24 hours depending on your location and product availability.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Are the medicines genuine and safe? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Yes. Every product is sourced from licensed distributors and checked by our in-house pharmacist team before dispatch.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What is your return policy? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Unopened, undamaged products can be returned within 7 days. Medicines are non-returnable once the seal is broken, per pharmacy regulation.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="newsletter reveal">
-      <h2>Stay Updated on Health &amp; Offers</h2>
-      <p>Subscribe for wellness tips, new arrivals, and exclusive discounts.</p>
-      <form class="newsletter-form" id="newsletterForm">
-        <input type="email" placeholder="Enter your email address" required aria-label="Email address">
-        <button class="btn" type="submit">Subscribe</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="brand">
-          <svg class="logo-mark" width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="logoGradL" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-      </linearGradient></defs>
-      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#logoGradL)" stroke-width="2.4" stroke-dasharray="4 6"/>
-      <circle cx="32" cy="32" r="23" fill="url(#logoGradL)"/>
-      <path d="M24 32 h16 M32 24 v16" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M20 40 q3 -8 8 -3" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
-    </svg>
-          <span><span class="brand-name">Swati Enterprises</span><span class="brand-tag">Your Trusted Medical Store</span></span>
-        </a>
-        <p class="desc">Genuine medicines and healthcare essentials delivered to your doorstep, with pharmacist-verified quality on every order.</p>
-        <div class="social-row">
-          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23 4.9a9.3 9.3 0 0 1-2.6.7 4.5 4.5 0 0 0 2-2.5c-.9.5-1.9.9-2.9 1.1A4.5 4.5 0 0 0 11.9 8.5 12.8 12.8 0 0 1 2.7 3.8a4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.6v.1a4.5 4.5 0 0 0 3.6 4.4 4.5 4.5 0 0 1-2 .1 4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 19.5a12.8 12.8 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6A9.2 9.2 0 0 0 23 4.9z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23 12s0-3.4-.4-5a3 3 0 0 0-2.1-2C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.5.5a3 3 0 0 0-2.1 2C1 8.6 1 12 1 12s0 3.4.4 5a3 3 0 0 0 2.1 2c1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5a3 3 0 0 0 2.1-2c.4-1.6.4-5 .4-5zM9.8 15.5v-7l6 3.5z"/></svg></a>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-inner">
+        <span>🚚 Free delivery on orders above ₹499 | 📞 24/7 Support: 1800-123-4567</span>
+        <div class="top-bar-links">
+          <a href="login.html">Login</a>
+          <a href="register.html">Register</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
         </div>
       </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="categories.html">Categories</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="logo" aria-label="Swati Enterprises Home">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="logo-name">Swati Enterprises</span>
+            <span class="logo-tag">Premium Pharmacy</span>
+          </div>
+        </a>
+
+        <!-- Search -->
+        <div class="nav-search hide-mobile" role="search">
+          <form class="nav-search-form" id="nav-search-form" action="shop.html">
+            <input type="search" class="nav-search-input" id="nav-search-input" name="q"
+              placeholder="Search medicines, vitamins, health products..." autocomplete="off"
+              aria-label="Search products">
+            <button type="submit" class="nav-search-btn" aria-label="Search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+            </button>
+          </form>
+          <div class="search-suggestions" id="search-suggestions" role="listbox" aria-label="Search suggestions"></div>
+        </div>
+
+        <!-- Desktop Nav -->
+        <nav class="nav-menu" aria-label="Main navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="shop.html" class="nav-link">Shop</a>
+          <a href="categories.html" class="nav-link">Categories</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="nav-actions">
+          <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle theme" title="Toggle dark/light mode">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+          <a href="wishlist.html" class="nav-action-btn" aria-label="Wishlist" title="Wishlist">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+            <span class="nav-badge wishlist-badge" style="display:none">0</span>
+          </a>
+          <a href="cart.html" class="nav-action-btn" aria-label="Shopping cart" title="Cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+            <span class="nav-badge cart-badge" style="display:none">0</span>
+          </a>
+          <a href="login.html" class="nav-action-btn hide-mobile" aria-label="My account" title="Account">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </a>
+          <!-- Hamburger -->
+          <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
       </div>
-      <div>
-        <h4>My Account</h4>
-        <ul class="footer-links">
-          <li><a href="login.html">Login</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="cart.html">My Cart</a></li>
-          <li><a href="checkout.html">Checkout</a></li>
-          <li><a href="contact.html">Track Order</a></li>
-        </ul>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+
+    <!-- ── HERO SECTION ── -->
+    <section class="hero" aria-label="Hero banner">
+      <div class="hero-blob hero-blob-1"></div>
+      <div class="hero-blob hero-blob-2"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text animate-fade-in-up">
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              🇮🇳 India's Most Trusted Online Pharmacy
+            </div>
+            <h1 class="hero-title">
+              Your Health,<br>
+              <span>Our Priority</span>
+            </h1>
+            <p class="hero-desc">
+              Premium quality medicines, vitamins & health products delivered to your doorstep. Authentic products,
+              unbeatable prices, lightning-fast delivery.
+            </p>
+            <div class="hero-actions">
+              <a href="shop.html" class="btn btn-outline-white btn-lg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="width:20px;height:20px">
+                  <circle cx="9" cy="21" r="1" />
+                  <circle cx="20" cy="21" r="1" />
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
+                Shop Now
+              </a>
+              <a href="categories.html" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,0.4)">
+                Browse Categories →
+              </a>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="50000" data-suffix="+">0</div>
+                <div class="hero-stat-label">Products</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="2500000" data-suffix="+">0</div>
+                <div class="hero-stat-label">Happy Customers</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="500" data-suffix="+">0</div>
+                <div class="hero-stat-label">Cities</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="24">0</div>
+                <div class="hero-stat-label">Hours Delivery</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-image-wrap animate-fade-in delay-300">
+            <div
+              style="width:100%;max-width:480px;border-radius:var(--radius-2xl);background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.2);padding:var(--space-8);text-align:center;box-shadow:0 32px 80px rgba(0,0,0,0.25)">
+              <div style="font-size:5rem;margin-bottom:var(--space-4);animation:float 4s ease-in-out infinite">💊</div>
+              <h2 style="font-size:var(--text-2xl);font-weight:800;color:#fff;margin-bottom:var(--space-3)">Genuine
+                Medicines</h2>
+              <p style="color:rgba(255,255,255,0.8);font-size:var(--text-sm);margin-bottom:var(--space-6)">100%
+                authentic products from licensed distributors</p>
+              <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap">
+                <span
+                  style="background:rgba(255,255,255,0.15);color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;backdrop-filter:blur(8px)">✓
+                  ISO Certified</span>
+                <span
+                  style="background:rgba(255,255,255,0.15);color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;backdrop-filter:blur(8px)">✓
+                  Govt. Licensed</span>
+                <span
+                  style="background:rgba(255,255,255,0.15);color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;backdrop-filter:blur(8px)">✓
+                  Free Returns</span>
+              </div>
+            </div>
+
+            <!-- Floating Cards -->
+            <div class="hero-floating-card hero-floating-card-1">
+              <div class="hero-card-icon hero-card-icon-green">🚚</div>
+              <div class="hero-card-text">
+                <strong>Same Day Delivery</strong>
+                <span>In select cities</span>
+              </div>
+            </div>
+            <div class="hero-floating-card hero-floating-card-2">
+              <div class="hero-card-icon hero-card-icon-blue">🔒</div>
+              <div class="hero-card-text">
+                <strong>Secure Payments</strong>
+                <span>100% encrypted</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <h4>Get in Touch</h4>
-        <ul class="footer-contact">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 221 Wellness Avenue, Patna, Bihar 800001, India</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2.1z"/></svg> +91 98765 43210</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg> care@swatienterprises.in</li>
-        </ul>
+    </section>
+
+    <!-- ── FEATURES BAR ── -->
+    <section class="features-bar" aria-label="Key features">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature-item reveal">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13" />
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+                <circle cx="5.5" cy="18.5" r="2.5" />
+                <circle cx="18.5" cy="18.5" r="2.5" />
+              </svg>
+            </div>
+            <div>
+              <p class="feature-title">Free Delivery</p>
+              <p class="feature-desc">On orders above ₹499</p>
+            </div>
+          </div>
+          <div class="feature-item reveal delay-100">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <div>
+              <p class="feature-title">100% Genuine</p>
+              <p class="feature-desc">Authenticated products only</p>
+            </div>
+          </div>
+          <div class="feature-item reveal delay-200">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+              </svg>
+            </div>
+            <div>
+              <p class="feature-title">Easy Returns</p>
+              <p class="feature-desc">7-day hassle-free returns</p>
+            </div>
+          </div>
+          <div class="feature-item reveal delay-300">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14 19.79 19.79 0 0 1 1.65 5.4 2 2 0 0 1 3.62 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.9a16 16 0 0 0 6 6l1.06-1.06a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 18.02v-.1a2 2 0 0 1 0-.1z" />
+              </svg>
+            </div>
+            <div>
+              <p class="feature-title">24/7 Support</p>
+              <p class="feature-desc">Always here to help you</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CATEGORY STRIP ── -->
+    <section class="category-strip" aria-label="Browse categories">
+      <div class="container">
+        <div class="flex-between mb-4">
+          <h2 style="font-size:var(--text-xl);font-weight:700;color:var(--clr-text)">Shop by Category</h2>
+          <a href="categories.html" class="btn btn-outline btn-sm">View All →</a>
+        </div>
+        <div class="category-scroll" id="category-chips-scroll" role="list"></div>
+      </div>
+    </section>
+
+    <!-- ── FEATURED PRODUCTS ── -->
+    <section style="padding:var(--space-20) 0;background:var(--clr-bg)" aria-label="Featured products">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Featured Collection</span>
+          <h2 class="section-title">Bestselling Health Products</h2>
+          <p class="section-subtitle">Handpicked by our pharmacists – the most trusted medicines and supplements</p>
+        </div>
+        <div class="products-grid" id="featured-products-grid"></div>
+        <div style="text-align:center;margin-top:var(--space-10)">
+          <a href="shop.html" class="btn btn-primary btn-lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px">
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+            View All Products
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DEAL OF THE DAY ── -->
+    <section class="deal-section" aria-label="Deal of the day">
+      <div class="container">
+        <div class="deal-inner">
+          <div>
+            <p class="deal-tag">⚡ LIMITED TIME OFFER</p>
+            <h2 class="deal-title">Deal of<br>the Day</h2>
+            <p class="deal-desc">Grab today's exclusive deal on premium health products. Prices reset at midnight!</p>
+            <div class="deal-discount-badge">Up to 40% OFF</div>
+            <div class="countdown-wrap">
+              <p class="countdown-label">Offer ends in:</p>
+              <div class="countdown">
+                <div class="countdown-unit">
+                  <span class="countdown-num" id="countdown-hours">00</span>
+                  <span class="countdown-unit-label">Hours</span>
+                </div>
+                <span class="countdown-sep">:</span>
+                <div class="countdown-unit">
+                  <span class="countdown-num" id="countdown-minutes">00</span>
+                  <span class="countdown-unit-label">Mins</span>
+                </div>
+                <span class="countdown-sep">:</span>
+                <div class="countdown-unit">
+                  <span class="countdown-num" id="countdown-seconds">00</span>
+                  <span class="countdown-unit-label">Secs</span>
+                </div>
+              </div>
+            </div>
+            <a href="shop.html?sort=discount" class="btn btn-primary btn-xl">
+              🛒 Shop Deals Now
+            </a>
+          </div>
+          <div class="deal-product-card">
+            <div style="font-size:8rem;margin-bottom:var(--space-4);animation:float 4s ease-in-out infinite">💊</div>
+            <p
+              style="color:rgba(255,255,255,0.6);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">
+              Today's Pick</p>
+            <h3 class="deal-product-name">Omron HEM-7120<br>Blood Pressure Monitor</h3>
+            <div class="deal-product-price" style="margin-top:16px">
+              <span class="deal-price-new">₹1,699</span>
+              <span class="deal-price-old">₹2,199</span>
+            </div>
+            <div style="margin-top:12px">
+              <span
+                style="background:var(--clr-red);color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700">Save
+                ₹500 · 23% OFF</span>
+            </div>
+            <div
+              style="margin-top:24px;background:rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:12px;font-size:12px;color:rgba(255,255,255,0.6)">
+              ⚡ 47 people bought this today
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BEST SELLERS ── -->
+    <section style="padding:var(--space-20) 0;background:var(--clr-surface)" aria-label="Best sellers">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">🏆 Top Rated</span>
+          <h2 class="section-title">Best Sellers</h2>
+          <p class="section-subtitle">Products our customers love and trust the most</p>
+        </div>
+        <div class="products-grid" id="bestsellers-grid"></div>
+      </div>
+    </section>
+
+    <!-- ── OFFER BANNERS ── -->
+    <section style="padding:var(--space-16) 0;background:var(--clr-bg-alt)" aria-label="Special offers">
+      <div class="container">
+        <div class="grid-2 gap-6">
+          <a href="shop.html?cat=vitamins"
+            style="background:linear-gradient(135deg,#0F9D58,#4CAF50);border-radius:var(--radius-2xl);padding:var(--space-8);display:flex;align-items:center;justify-content:space-between;text-decoration:none;overflow:hidden;position:relative;transition:var(--transition)"
+            class="reveal">
+            <div>
+              <p
+                style="color:rgba(255,255,255,0.8);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">
+                Vitamins & Supplements</p>
+              <h3 style="color:#fff;font-size:var(--text-2xl);font-weight:800;margin-bottom:12px;line-height:1.2">Up to
+                30% Off<br>on Vitamins</h3>
+              <span
+                style="background:rgba(255,255,255,0.2);color:#fff;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600">Shop
+                Now →</span>
+            </div>
+            <span style="font-size:6rem;opacity:.6">💊</span>
+          </a>
+          <a href="shop.html?cat=medical-equipment"
+            style="background:linear-gradient(135deg,#1976D2,#4FC3F7);border-radius:var(--radius-2xl);padding:var(--space-8);display:flex;align-items:center;justify-content:space-between;text-decoration:none;overflow:hidden;position:relative;transition:var(--transition)"
+            class="reveal delay-200">
+            <div>
+              <p
+                style="color:rgba(255,255,255,0.8);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">
+                Medical Devices</p>
+              <h3 style="color:#fff;font-size:var(--text-2xl);font-weight:800;margin-bottom:12px;line-height:1.2">
+                Premium Devices<br>at Best Prices</h3>
+              <span
+                style="background:rgba(255,255,255,0.2);color:#fff;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600">Explore
+                →</span>
+            </div>
+            <span style="font-size:6rem;opacity:.6">🩺</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section class="testimonials-section" aria-label="Customer testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">⭐ Reviews</span>
+          <h2 class="section-title">What Our Customers Say</h2>
+          <p class="section-subtitle">Trusted by over 25 lakh happy customers across India</p>
+        </div>
+        <div class="testimonials-slider">
+          <div class="testimonials-track" id="testimonials-track"></div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" id="testimonials-prev" aria-label="Previous testimonial">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <div class="slider-dots" id="testimonials-dots"></div>
+          <button class="slider-btn" id="testimonials-next" aria-label="Next testimonial">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="faq-section" aria-label="Frequently asked questions">
+      <div class="container" style="max-width:800px">
+        <div class="section-header">
+          <span class="section-tag">FAQ</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">Everything you need to know about our services</p>
+        </div>
+        <div id="faq-container"></div>
+      </div>
+    </section>
+
+    <!-- ── NEWSLETTER ── -->
+    <section class="newsletter-section" aria-label="Newsletter signup">
+      <div class="container">
+        <div class="newsletter-inner">
+          <h2 class="newsletter-title">Stay Healthy, Stay Updated</h2>
+          <p class="newsletter-desc">Subscribe to get exclusive health tips, medicine alerts, and special offers
+            delivered to your inbox.</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter your email address..."
+              aria-label="Email address" required>
+            <button type="submit" class="btn btn-outline-white btn-lg">Subscribe</button>
+          </form>
+          <p style="margin-top:16px;font-size:12px;color:rgba(255,255,255,0.6)">🔒 No spam. Unsubscribe anytime. We
+            respect your privacy.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <div class="footer-logo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                </svg>
+              </div>
+              <span class="footer-logo-name">Swati Enterprises</span>
+            </div>
+            <p class="footer-desc">India's most trusted online pharmacy delivering genuine medicines and health products
+              with care and commitment.</p>
+            <div class="footer-social">
+              <a href="#" class="social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg></a>
+              <a href="#" class="social-btn" aria-label="Twitter/X"><svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                </svg></a>
+              <a href="#" class="social-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg></a>
+              <a href="#" class="social-btn" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V9l5.75 3.02-5.75 3z" />
+                </svg></a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="footer-heading">Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="shop.html" class="footer-link">Shop All</a></li>
+              <li><a href="categories.html" class="footer-link">Categories</a></li>
+              <li><a href="about.html" class="footer-link">About Us</a></li>
+              <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+              <li><a href="login.html" class="footer-link">My Account</a></li>
+              <li><a href="cart.html" class="footer-link">Cart</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer-heading">Categories</h3>
+            <ul class="footer-links">
+              <li><a href="shop.html?cat=pain-relief" class="footer-link">Pain Relief</a></li>
+              <li><a href="shop.html?cat=vitamins" class="footer-link">Vitamins</a></li>
+              <li><a href="shop.html?cat=skin-care" class="footer-link">Skin Care</a></li>
+              <li><a href="shop.html?cat=heart-care" class="footer-link">Heart Care</a></li>
+              <li><a href="shop.html?cat=baby-care" class="footer-link">Baby Care</a></li>
+              <li><a href="shop.html?cat=medical-equipment" class="footer-link">Medical Devices</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer-heading">Contact Us</h3>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Govind Mitra Rd, Lalbagh, Patna, Bihar – 800004</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14 19.79 19.79 0 0 1 1.65 5.4 2 2 0 0 1 3.62 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.9a16 16 0 0 0 6 6z" />
+              </svg>
+              <span>+91-9162607679</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <span>support@swatienterprises.com</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <span>Mon–Sat: 9 AM – 9 PM</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Swati Enterprises. All rights reserved.</span>
-      <div class="legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms &amp; Conditions</a>
-        <a href="#">Shipping Policy</a>
+      <div class="container">
+        <div class="footer-bottom-inner">
+          <p class="footer-copy">© 2026 Swati Enterprises. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Refund Policy</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<div class="modal-overlay" id="quickViewOverlay">
-  <div class="modal-box">
-    <button class="modal-close" id="quickViewClose" aria-label="Close quick view">✕</button>
-    <div id="quickViewBody"></div>
-  </div>
-</div>
-
-<div class="toast-stack" id="toastStack"></div>
-<button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
-
-<script src="js/products.js"></script>
-<script src="js/wishlist.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/search.js"></script>
-<script src="js/app.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // Category cards
-  const cats = [...new Set(PRODUCTS.map(p => p.category))];
-  const catGrid = document.getElementById("catGridHome");
-  catGrid.innerHTML = cats.map(c => {
-    const count = getProductsByCategory(c).length;
-    const iconKey = CATEGORY_ICONS[c] || "pill";
-    return `<a href="shop.html?category=${encodeURIComponent(c)}" class="cat-card reveal in">
-      <div class="cat-icon">${categoryIconSVG(iconKey)}</div>
-      <h3>${c}</h3><p>${count} products</p>
-    </a>`;
-  }).join("");
-
-  // Featured products
-  renderGrid(document.getElementById("featuredGrid"), PRODUCTS.filter(p => p.featured).slice(0, 8));
-
-  // Best sellers slider
-  const bs = PRODUCTS.filter(p => p.bestSeller);
-  document.getElementById("bestSellerTrack").innerHTML = bs.map(productCardHTML).join("");
-  bindSlider("bestSellerTrack", "bsPrev", "bsNext");
-});
-</script>
 </body>
+
 </html>

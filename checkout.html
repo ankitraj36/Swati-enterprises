@@ -1,229 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout | Swati Enterprises</title>
-<meta name="description" content="Complete your Swati Enterprises order with secure billing, shipping, and demo payment options.">
-<meta name="theme-color" content="#0F9D58">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/animations.css">
-<link rel="stylesheet" href="css/responsive.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure checkout – Swati Enterprises. Billing, payment, and order review.">
+  <title>Checkout – Swati Enterprises</title>
+  <link rel="icon" href="images/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script type="module" src="js/app.js" defer></script>
 </head>
-<body data-page="shop">
-<a href="#main" class="skip-link">Skip to content</a>
+<body>
+<div id="page-loader"><div class="loader-ring"></div></div>
+<div id="toast-container"></div>
+<button id="scroll-top" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></button>
+<div class="overlay" id="mobile-overlay"></div>
+<nav class="mobile-menu" id="mobile-menu"><div class="mobile-menu-header"><div class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div><span class="logo-name" style="font-size:var(--text-base);font-weight:800">Swati Enterprises</span></div><button id="mobile-menu-close" class="btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><a href="index.html" class="nav-link">🏠 Home</a><a href="shop.html" class="nav-link">🛍️ Shop</a></nav>
+<div class="modal-overlay" id="quick-view-modal" role="dialog" aria-modal="true"><div class="modal"><div class="modal-header"><h2 style="font-size:var(--text-lg);font-weight:700">Quick View</h2><button id="modal-close-btn" class="modal-close-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body" id="modal-body"></div></div></div>
+<div class="top-bar"><div class="container"><div class="top-bar-inner"><span>🔒 Secure Checkout – Your data is encrypted and protected</span></div></div></div>
+<header class="navbar" id="navbar"><div class="container"><div class="nav-inner"><a href="index.html" class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div><div class="logo-text"><span class="logo-name">Swati Enterprises</span><span class="logo-tag">Secure Checkout</span></div></a><div class="nav-actions" style="margin-left:auto"><a href="cart.html" class="nav-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="nav-badge cart-badge" style="display:none">0</span></a><button class="theme-toggle" id="theme-toggle-btn"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><button class="hamburger" id="hamburger-btn"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button></div></div></div></header>
 
-<div class="page-loader" id="pageLoader">
-  <div class="loader-logo"><svg class="logo-mark" width="60" height="60" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="logoGradL" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-      </linearGradient></defs>
-      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#logoGradL)" stroke-width="2.4" stroke-dasharray="4 6"/>
-      <circle cx="32" cy="32" r="23" fill="url(#logoGradL)"/>
-      <path d="M24 32 h16 M32 24 v16" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M20 40 q3 -8 8 -3" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
-    </svg></div>
-  <div class="loader-bar"><span></span></div>
-</div>
+<main>
+  <div class="container" style="padding-block:var(--space-12)">
+    <h1 style="font-size:var(--text-2xl);font-weight:800;margin-bottom:var(--space-6)">Checkout</h1>
 
-<header class="navbar" id="navbar">
-  <div class="container nav-inner">
-    <a href="index.html" class="brand" aria-label="Swati Enterprises home">
-      <svg class="logo-mark" width="42" height="42" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="logoGradL" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-      </linearGradient></defs>
-      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#logoGradL)" stroke-width="2.4" stroke-dasharray="4 6"/>
-      <circle cx="32" cy="32" r="23" fill="url(#logoGradL)"/>
-      <path d="M24 32 h16 M32 24 v16" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M20 40 q3 -8 8 -3" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
-    </svg>
-      <span><span class="brand-name">Swati Enterprises</span><span class="brand-tag">Your Trusted Medical Store</span></span>
-    </a>
-    <nav aria-label="Primary">
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html" class="active">Shop</a></li>
-        <li><a href="categories.html">Categories</a></li>
-        <li><a href="shop.html?filter=offers">Offers</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="nav-search" role="search">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input type="text" id="navSearchInput" placeholder="Search medicines, vitamins..." aria-label="Search products" autocomplete="off">
-      <div class="search-suggest" id="navSearchSuggest"></div>
+    <!-- Steps -->
+    <div class="checkout-steps" role="tablist" style="margin-bottom:var(--space-8)">
+      <div class="checkout-step active" role="tab"><div class="checkout-step-num">1</div> Delivery</div>
+      <div class="checkout-step" role="tab"><div class="checkout-step-num">2</div> Payment</div>
+      <div class="checkout-step" role="tab"><div class="checkout-step-num">3</div> Review</div>
     </div>
-    <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark / light mode">
-        <span class="knob">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.4 5.4 0 0 1 12 3z"/></svg>
-        </span>
-      </button>
-      <a href="wishlist-note.html" onclick="return false;" class="btn-icon icon-badge" aria-label="Wishlist" title="Wishlist">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-10-9.3C0.3 7.9 2.6 4 6.4 4c2 0 3.6 1 5.6 3 2-2 3.6-3 5.6-3 3.8 0 6.1 3.9 4.4 7.7C19.5 16.4 12 21 12 21z"/></svg>
-        <span class="count" id="wishIconBadge" data-wish-count style="display:none;">0</span>
-      </a>
-      <a href="cart.html" class="btn-icon icon-badge" aria-label="Cart" title="Cart">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-        <span class="count" id="cartIconBadge" data-cart-count style="display:none;">0</span>
-      </a>
-      <a href="login.html" class="btn btn-primary btn-sm">Login</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
-    </div>
-  </div>
-</header>
 
-<main id="main">
-
-<section class="page-banner">
-  <div class="container">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="cart.html">Cart</a> / <span>Checkout</span></div>
-    <h1>Checkout</h1>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <form class="cart-layout" id="checkoutForm" novalidate>
+    <div class="checkout-layout">
+      <!-- Left: Panels -->
       <div>
-        <div class="form-card" style="margin-bottom:24px;">
-          <h3 style="margin-bottom:20px;">Billing Details</h3>
-          <div class="form-row">
-            <div class="form-group"><label for="billFirst">First Name</label><input type="text" id="billFirst" required><span class="error-msg">First name is required</span></div>
-            <div class="form-group"><label for="billLast">Last Name</label><input type="text" id="billLast" required><span class="error-msg">Last name is required</span></div>
+        <!-- Panel 1: Delivery -->
+        <div class="checkout-panel" id="checkout-panel-0">
+          <div style="background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-xl);padding:var(--space-8)">
+            <h2 class="form-section-title">Delivery Address</h2>
+            <form id="checkout-form">
+              <div class="form-grid-2">
+                <div class="form-group"><label class="field-label" for="fname">First Name *</label><input class="input" type="text" id="fname" placeholder="Enter first name" required></div>
+                <div class="form-group"><label class="field-label" for="lname">Last Name *</label><input class="input" type="text" id="lname" placeholder="Enter last name" required></div>
+              </div>
+              <div class="form-group"><label class="field-label" for="ch-email">Email Address *</label><input class="input" type="email" id="ch-email" placeholder="your@email.com" required></div>
+              <div class="form-group"><label class="field-label" for="ch-phone">Mobile Number *</label><input class="input" type="tel" id="ch-phone" placeholder="10-digit mobile number" required></div>
+              <div class="form-group"><label class="field-label" for="address">Complete Address *</label><textarea class="input" id="address" rows="3" placeholder="Flat/House no., Building, Street, Area" required style="resize:none"></textarea></div>
+              <div class="form-grid-2">
+                <div class="form-group"><label class="field-label" for="city">City *</label><input class="input" type="text" id="city" placeholder="City" required></div>
+                <div class="form-group"><label class="field-label" for="state">State *</label>
+                  <select class="input" id="state" required style="appearance:none">
+                    <option value="">Select State</option>
+                    <option>Andhra Pradesh</option><option>Delhi</option><option>Gujarat</option><option>Karnataka</option><option>Kerala</option><option>Maharashtra</option><option>Punjab</option><option>Rajasthan</option><option>Tamil Nadu</option><option>Uttar Pradesh</option><option>West Bengal</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group"><label class="field-label" for="pincode">PIN Code *</label><input class="input" type="text" id="pincode" placeholder="6-digit PIN" maxlength="6" required></div>
+                <div class="form-group"><label class="field-label" for="landmark">Landmark</label><input class="input" type="text" id="landmark" placeholder="Nearby landmark (optional)"></div>
+              </div>
+              <div style="margin-top:var(--space-3)">
+                <label style="display:flex;align-items:center;gap:var(--space-3);cursor:pointer;font-size:var(--text-sm)">
+                  <input type="checkbox" checked style="accent-color:var(--clr-primary);width:16px;height:16px"> Save this address for future orders
+                </label>
+              </div>
+            </form>
           </div>
-          <div class="form-row">
-            <div class="form-group"><label for="billEmail">Email Address</label><input type="email" id="billEmail" required><span class="error-msg">Enter a valid email</span></div>
-            <div class="form-group"><label for="billPhone">Phone Number</label><input type="tel" id="billPhone" required><span class="error-msg">Enter a valid phone number</span></div>
+          <div style="margin-top:var(--space-5);display:flex;justify-content:flex-end">
+            <button class="btn btn-primary btn-lg checkout-next-btn">Continue to Payment →</button>
           </div>
         </div>
 
-        <div class="form-card" style="margin-bottom:24px;">
-          <h3 style="margin-bottom:20px;">Shipping Address</h3>
-          <div class="form-group"><label for="shipAddr">Street Address</label><input type="text" id="shipAddr" required><span class="error-msg">Address is required</span></div>
-          <div class="form-row">
-            <div class="form-group"><label for="shipCity">City</label><input type="text" id="shipCity" required><span class="error-msg">City is required</span></div>
-            <div class="form-group"><label for="shipState">State</label><input type="text" id="shipState" required><span class="error-msg">State is required</span></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label for="shipPin">PIN Code</label><input type="text" id="shipPin" required><span class="error-msg">PIN code is required</span></div>
-            <div class="form-group"><label for="shipCountry">Country</label>
-              <select id="shipCountry"><option>India</option><option>United States</option><option>United Kingdom</option><option>Canada</option></select>
+        <!-- Panel 2: Payment -->
+        <div class="checkout-panel hidden" id="checkout-panel-1">
+          <div style="background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-xl);padding:var(--space-8)">
+            <h2 class="form-section-title">Payment Method</h2>
+            <div class="payment-option selected" id="pay-upi">
+              <input type="radio" name="payment" value="upi" checked>
+              <span class="payment-option-icon">📱</span>
+              <div class="payment-option-info"><strong>UPI Payment</strong><span>Google Pay, PhonePe, BHIM, Paytm</span></div>
+            </div>
+            <div class="payment-option" id="pay-card">
+              <input type="radio" name="payment" value="card">
+              <span class="payment-option-icon">💳</span>
+              <div class="payment-option-info"><strong>Credit / Debit Card</strong><span>Visa, Mastercard, RuPay, Amex</span></div>
+            </div>
+            <div class="payment-option" id="pay-netbanking">
+              <input type="radio" name="payment" value="netbanking">
+              <span class="payment-option-icon">🏦</span>
+              <div class="payment-option-info"><strong>Net Banking</strong><span>All major Indian banks</span></div>
+            </div>
+            <div class="payment-option" id="pay-cod">
+              <input type="radio" name="payment" value="cod">
+              <span class="payment-option-icon">💵</span>
+              <div class="payment-option-info"><strong>Cash on Delivery</strong><span>Pay when your order arrives</span></div>
+            </div>
+            <!-- Card Details (shown when card selected) -->
+            <div id="card-details-section" style="margin-top:var(--space-6);padding:var(--space-6);background:var(--clr-bg-alt);border-radius:var(--radius-xl);display:none">
+              <div class="form-group"><label class="field-label" for="card-number">Card Number</label><input class="input" type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19"></div>
+              <div class="form-group"><label class="field-label" for="card-name">Name on Card</label><input class="input" type="text" id="card-name" placeholder="As printed on card"></div>
+              <div class="form-grid-2">
+                <div class="form-group"><label class="field-label" for="card-expiry">Expiry Date</label><input class="input" type="text" id="card-expiry" placeholder="MM/YY" maxlength="5"></div>
+                <div class="form-group"><label class="field-label" for="card-cvv">CVV</label><input class="input" type="password" id="card-cvv" placeholder="•••" maxlength="4"></div>
+              </div>
             </div>
           </div>
+          <div style="margin-top:var(--space-5);display:flex;justify-content:space-between">
+            <button class="btn btn-ghost checkout-back-btn">← Back</button>
+            <button class="btn btn-primary btn-lg checkout-next-btn">Review Order →</button>
+          </div>
         </div>
 
-        <div class="form-card">
-          <h3 style="margin-bottom:20px;">Payment Method</h3>
-          <div class="pay-methods">
-            <label class="pay-option"><input type="radio" name="pay" checked> <div><strong>Credit / Debit Card</strong><div class="form-hint">Visa, Mastercard, RuPay accepted</div></div></label>
-            <label class="pay-option"><input type="radio" name="pay"> <div><strong>UPI</strong><div class="form-hint">Pay via Google Pay, PhonePe, Paytm</div></div></label>
-            <label class="pay-option"><input type="radio" name="pay"> <div><strong>Cash on Delivery</strong><div class="form-hint">Pay when your order arrives</div></div></label>
+        <!-- Panel 3: Review -->
+        <div class="checkout-panel hidden" id="checkout-panel-2">
+          <div style="background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-xl);padding:var(--space-8)">
+            <h2 class="form-section-title">Review Your Order</h2>
+            <div style="text-align:center;padding:var(--space-8)">
+              <div style="font-size:3rem;margin-bottom:var(--space-4)">🎁</div>
+              <p style="color:var(--clr-text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6)">Review your cart summary on the right, then click Place Order to confirm.</p>
+              <div style="background:var(--clr-green-50);border:1px solid var(--clr-border);border-radius:var(--radius-xl);padding:var(--space-6);text-align:left">
+                <h3 style="font-size:var(--text-sm);font-weight:700;color:var(--clr-text);margin-bottom:var(--space-4)">Order Guarantee</h3>
+                <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+                  <span style="font-size:var(--text-sm);color:var(--clr-text-muted);display:flex;align-items:center;gap:var(--space-3)">✅ All products are 100% genuine and quality-checked</span>
+                  <span style="font-size:var(--text-sm);color:var(--clr-text-muted);display:flex;align-items:center;gap:var(--space-3)">✅ Delivery within 2–4 business days</span>
+                  <span style="font-size:var(--text-sm);color:var(--clr-text-muted);display:flex;align-items:center;gap:var(--space-3)">✅ 7-day return policy on eligible products</span>
+                  <span style="font-size:var(--text-sm);color:var(--clr-text-muted);display:flex;align-items:center;gap:var(--space-3)">✅ 24/7 customer support</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <p class="form-hint" style="margin-top:14px;">This is a demo checkout — no real payment will be processed.</p>
+          <div style="margin-top:var(--space-5);display:flex;justify-content:space-between;align-items:center">
+            <button class="btn btn-ghost checkout-back-btn">← Back to Payment</button>
+            <button class="btn btn-primary btn-xl" id="place-order-btn" style="min-width:220px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Place Order
+            </button>
+          </div>
         </div>
       </div>
 
-      <aside class="summary-card">
-        <h3 style="margin-bottom:16px;">Order Summary</h3>
-        <div id="checkoutItems" style="margin-bottom:14px;"></div>
-        <div class="summary-row"><span>Subtotal</span><span id="checkoutSubtotal">₹0</span></div>
-        <div class="summary-row"><span>Shipping</span><span id="checkoutShipping">Free</span></div>
-        <div class="summary-row total"><span>Total</span><span id="checkoutTotal">₹0</span></div>
-        <button type="submit" class="btn btn-primary btn-block" style="margin-top:18px;">Place Order</button>
-        <p class="form-hint" style="text-align:center;margin-top:12px;">🔒 Secure, encrypted checkout</p>
-      </aside>
-    </form>
+      <!-- Right: Summary -->
+      <div>
+        <div class="order-summary-card">
+          <h3 style="font-size:var(--text-base);font-weight:700;margin-bottom:var(--space-5)">Price Summary</h3>
+          <div class="summary-row"><span style="color:var(--clr-text-muted)">Items</span><span id="summary-items">0 items</span></div>
+          <div class="summary-row"><span style="color:var(--clr-text-muted)">Subtotal</span><span id="summary-subtotal">₹0</span></div>
+          <div class="summary-row"><span style="color:var(--clr-primary)">Savings</span><span id="summary-discount" style="color:var(--clr-primary)">₹0</span></div>
+          <div class="summary-row"><span style="color:var(--clr-text-muted)">Delivery</span><span id="summary-shipping">₹49</span></div>
+          <div class="summary-row total"><span>Total</span><strong id="summary-total">₹0</strong></div>
+          <div style="margin-top:var(--space-4);padding:var(--space-4);background:var(--clr-green-50);border-radius:var(--radius-lg);font-size:var(--text-xs);color:var(--clr-primary);text-align:center;font-weight:600">
+            🎉 You're saving on this order!
+          </div>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-5);background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-xl);text-align:center">
+          <p style="font-size:var(--text-xs);color:var(--clr-text-muted);margin-bottom:var(--space-3)">We accept</p>
+          <div style="display:flex;justify-content:center;gap:var(--space-3);font-size:1.5rem">
+            <span title="UPI">📱</span><span title="Visa">💳</span><span title="Net Banking">🏦</span><span title="Cash on Delivery">💵</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
-
 </main>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="brand">
-          <svg class="logo-mark" width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="logoGradL" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-      </linearGradient></defs>
-      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#logoGradL)" stroke-width="2.4" stroke-dasharray="4 6"/>
-      <circle cx="32" cy="32" r="23" fill="url(#logoGradL)"/>
-      <path d="M24 32 h16 M32 24 v16" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M20 40 q3 -8 8 -3" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
-    </svg>
-          <span><span class="brand-name">Swati Enterprises</span><span class="brand-tag">Your Trusted Medical Store</span></span>
-        </a>
-        <p class="desc">Genuine medicines and healthcare essentials delivered to your doorstep, with pharmacist-verified quality on every order.</p>
-        <div class="social-row">
-          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23 4.9a9.3 9.3 0 0 1-2.6.7 4.5 4.5 0 0 0 2-2.5c-.9.5-1.9.9-2.9 1.1A4.5 4.5 0 0 0 11.9 8.5 12.8 12.8 0 0 1 2.7 3.8a4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.6v.1a4.5 4.5 0 0 0 3.6 4.4 4.5 4.5 0 0 1-2 .1 4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 19.5a12.8 12.8 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6A9.2 9.2 0 0 0 23 4.9z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23 12s0-3.4-.4-5a3 3 0 0 0-2.1-2C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.5.5a3 3 0 0 0-2.1 2C1 8.6 1 12 1 12s0 3.4.4 5a3 3 0 0 0 2.1 2c1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5a3 3 0 0 0 2.1-2c.4-1.6.4-5 .4-5zM9.8 15.5v-7l6 3.5z"/></svg></a>
-        </div>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="categories.html">Categories</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>My Account</h4>
-        <ul class="footer-links">
-          <li><a href="login.html">Login</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="cart.html">My Cart</a></li>
-          <li><a href="checkout.html">Checkout</a></li>
-          <li><a href="contact.html">Track Order</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Get in Touch</h4>
-        <ul class="footer-contact">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 221 Wellness Avenue, Patna, Bihar 800001, India</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2.1z"/></svg> +91 98765 43210</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg> care@swatienterprises.in</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Swati Enterprises. All rights reserved.</span>
-      <div class="legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms &amp; Conditions</a>
-        <a href="#">Shipping Policy</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<div class="modal-overlay" id="quickViewOverlay">
-  <div class="modal-box">
-    <button class="modal-close" id="quickViewClose" aria-label="Close quick view">✕</button>
-    <div id="quickViewBody"></div>
-  </div>
-</div>
-
-<div class="toast-stack" id="toastStack"></div>
-<button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
-
-<script src="js/products.js"></script>
-<script src="js/wishlist.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/search.js"></script>
-<script src="js/app.js"></script>
-
+<script>
+  // Payment option selection
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.payment-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        opt.querySelector('input[type="radio"]').checked = true;
+        document.getElementById('card-details-section').style.display =
+          opt.id === 'pay-card' ? 'block' : 'none';
+      });
+    });
+  });
+</script>
+<footer class="footer"><div class="footer-bottom"><div class="container"><div class="footer-bottom-inner"><p class="footer-copy">© 2025 Swati Enterprises. All rights reserved. | 🔒 SSL Secured</p></div></div></div></footer>
 </body>
 </html>

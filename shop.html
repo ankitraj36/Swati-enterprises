@@ -1,300 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop | Swati Enterprises</title>
-<meta name="description" content="Browse the full Swati Enterprises catalog of genuine medicines, vitamins, and healthcare essentials. Filter by category, price, and rating.">
-<meta name="theme-color" content="#0F9D58">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/animations.css">
-<link rel="stylesheet" href="css/responsive.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop all medicines, vitamins, health products at Swati Enterprises. Filter by category, price, and rating. Best prices guaranteed.">
+  <title>Shop – Swati Enterprises</title>
+  <link rel="icon" href="images/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script type="module" src="js/app.js" defer></script>
 </head>
-<body data-page="shop">
-<a href="#main" class="skip-link">Skip to content</a>
+<body>
+<div id="page-loader"><div class="loader-ring"></div></div>
+<div id="toast-container"></div>
+<button id="scroll-top" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></button>
+<div class="overlay" id="mobile-overlay"></div>
 
-<div class="page-loader" id="pageLoader">
-  <div class="loader-logo"><svg class="logo-mark" width="60" height="60" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="logoGradL" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-      </linearGradient></defs>
-      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#logoGradL)" stroke-width="2.4" stroke-dasharray="4 6"/>
-      <circle cx="32" cy="32" r="23" fill="url(#logoGradL)"/>
-      <path d="M24 32 h16 M32 24 v16" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M20 40 q3 -8 8 -3" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
-    </svg></div>
-  <div class="loader-bar"><span></span></div>
+<nav class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-header">
+    <div class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div><span class="logo-name" style="font-size:var(--text-base);font-weight:800">Swati Enterprises</span></div>
+    <button id="mobile-menu-close" class="btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <a href="index.html" class="nav-link">🏠 Home</a>
+  <a href="shop.html" class="nav-link">🛍️ Shop</a>
+  <a href="categories.html" class="nav-link">📂 Categories</a>
+  <a href="about.html" class="nav-link">ℹ️ About Us</a>
+  <a href="contact.html" class="nav-link">📞 Contact</a>
+</nav>
+
+<div class="modal-overlay" id="quick-view-modal" role="dialog" aria-modal="true">
+  <div class="modal"><div class="modal-header"><h2 style="font-size:var(--text-lg);font-weight:700">Quick View</h2><button id="modal-close-btn" class="modal-close-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body" id="modal-body"></div></div>
 </div>
 
+<div class="top-bar"><div class="container"><div class="top-bar-inner"><span>🚚 Free delivery on orders above ₹499 | 📞 1800-123-4567</span></div></div></div>
+
 <header class="navbar" id="navbar">
-  <div class="container nav-inner">
-    <a href="index.html" class="brand" aria-label="Swati Enterprises home">
-      <svg class="logo-mark" width="42" height="42" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="logoGradL" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-      </linearGradient></defs>
-      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#logoGradL)" stroke-width="2.4" stroke-dasharray="4 6"/>
-      <circle cx="32" cy="32" r="23" fill="url(#logoGradL)"/>
-      <path d="M24 32 h16 M32 24 v16" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M20 40 q3 -8 8 -3" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
-    </svg>
-      <span><span class="brand-name">Swati Enterprises</span><span class="brand-tag">Your Trusted Medical Store</span></span>
-    </a>
-    <nav aria-label="Primary">
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html" class="active">Shop</a></li>
-        <li><a href="categories.html">Categories</a></li>
-        <li><a href="shop.html?filter=offers">Offers</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="nav-search" role="search">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input type="text" id="navSearchInput" placeholder="Search medicines, vitamins..." aria-label="Search products" autocomplete="off">
-      <div class="search-suggest" id="navSearchSuggest"></div>
-    </div>
+  <div class="container"><div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div><div class="logo-text"><span class="logo-name">Swati Enterprises</span><span class="logo-tag">Premium Pharmacy</span></div></a>
+    <div class="nav-search hide-mobile"><form class="nav-search-form" id="nav-search-form"><input type="search" class="nav-search-input" id="nav-search-input" placeholder="Search medicines..." autocomplete="off"><button type="submit" class="nav-search-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button></form><div class="search-suggestions" id="search-suggestions"></div></div>
+    <nav class="nav-menu"><a href="index.html" class="nav-link">Home</a><a href="shop.html" class="nav-link">Shop</a><a href="categories.html" class="nav-link">Categories</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Contact</a></nav>
     <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark / light mode">
-        <span class="knob">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.4 5.4 0 0 1 12 3z"/></svg>
-        </span>
-      </button>
-      <a href="wishlist-note.html" onclick="return false;" class="btn-icon icon-badge" aria-label="Wishlist" title="Wishlist">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-10-9.3C0.3 7.9 2.6 4 6.4 4c2 0 3.6 1 5.6 3 2-2 3.6-3 5.6-3 3.8 0 6.1 3.9 4.4 7.7C19.5 16.4 12 21 12 21z"/></svg>
-        <span class="count" id="wishIconBadge" data-wish-count style="display:none;">0</span>
-      </a>
-      <a href="cart.html" class="btn-icon icon-badge" aria-label="Cart" title="Cart">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-        <span class="count" id="cartIconBadge" data-cart-count style="display:none;">0</span>
-      </a>
-      <a href="login.html" class="btn btn-primary btn-sm">Login</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+      <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+      <a href="wishlist.html" class="nav-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="nav-badge wishlist-badge" style="display:none">0</span></a>
+      <a href="cart.html" class="nav-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="nav-badge cart-badge" style="display:none">0</span></a>
+      <button class="hamburger" id="hamburger-btn"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
     </div>
-  </div>
+  </div></div>
 </header>
 
-<main id="main">
+<div class="page-header">
+  <div class="container"><div class="page-header-inner">
+    <h1 class="page-header-title">Shop All Products</h1>
+    <nav class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Shop</span></nav>
+  </div></div>
+</div>
 
-<section class="page-banner">
+<main>
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <span>Shop</span></div>
-    <h1>Shop All Products</h1>
-  </div>
-</section>
-
-<section style="padding-top:48px;">
-  <div class="container">
-    <div class="tag-row reveal" id="quickCategoryChips" style="margin-bottom:32px;"></div>
     <div class="shop-layout">
-      <aside class="filter-panel reveal">
-        <h4>Category</h4>
-        <div class="filter-group" id="categoryFilterGroup"></div>
-
-        <h4>Price Range</h4>
-        <div class="filter-group">
-          <input type="range" min="0" max="1700" value="1700" id="priceRange" class="price-range">
-          <div class="form-hint">Up to ₹<span id="priceRangeVal">1700</span></div>
+      <!-- Sidebar -->
+      <aside class="filter-sidebar" aria-label="Product filters">
+        <div class="filter-card">
+          <div class="filter-title">
+            <span>Categories</span>
+            <span class="filter-clear" id="clear-all-filters">Clear All</span>
+          </div>
+          <label class="filter-option"><input type="checkbox" name="category" value="pain-relief"><span class="filter-option-label">Pain Relief</span><span class="filter-option-count">45</span></label>
+          <label class="filter-option"><input type="checkbox" name="category" value="cold-flu"><span class="filter-option-label">Cold & Flu</span><span class="filter-option-count">32</span></label>
+          <label class="filter-option"><input type="checkbox" name="category" value="vitamins"><span class="filter-option-label">Vitamins</span><span class="filter-option-count">68</span></label>
+          <label class="filter-option"><input type="checkbox" name="category" value="diabetes-care"><span class="filter-option-label">Diabetes Care</span><span class="filter-option-count">28</span></label>
+          <label class="filter-option"><input type="checkbox" name="category" value="heart-care"><span class="filter-option-label">Heart Care</span><span class="filter-option-count">35</span></label>
+          <label class="filter-option"><input type="checkbox" name="category" value="skin-care"><span class="filter-option-label">Skin Care</span><span class="filter-option-count">72</span></label>
+          <label class="filter-option"><input type="checkbox" name="category" value="baby-care"><span class="filter-option-label">Baby Care</span><span class="filter-option-count">42</span></label>
+          <label class="filter-option"><input type="checkbox" name="category" value="personal-care"><span class="filter-option-label">Personal Care</span><span class="filter-option-count">95</span></label>
+          <label class="filter-option"><input type="checkbox" name="category" value="medical-equipment"><span class="filter-option-label">Medical Equipment</span><span class="filter-option-count">38</span></label>
+          <label class="filter-option"><input type="checkbox" name="category" value="womens-health"><span class="filter-option-label">Women's Health</span><span class="filter-option-count">55</span></label>
+          <label class="filter-option"><input type="checkbox" name="category" value="mens-health"><span class="filter-option-label">Men's Health</span><span class="filter-option-count">40</span></label>
+          <label class="filter-option"><input type="checkbox" name="category" value="orthopedic-care"><span class="filter-option-label">Orthopedic Care</span><span class="filter-option-count">30</span></label>
         </div>
 
-        <h4>Availability</h4>
-        <div class="filter-group">
-          <label><input type="checkbox" id="inStockOnly"> In Stock Only</label>
+        <div class="filter-card">
+          <div class="filter-title">Price Range</div>
+          <input type="range" id="price-slider" min="0" max="5000" value="5000" step="50" aria-label="Maximum price">
+          <div class="price-range-inputs">
+            <input type="number" class="price-range-input" id="price-min-input" placeholder="Min ₹" min="0" max="5000" value="0">
+            <input type="number" class="price-range-input" id="price-max-input" id="price-max" placeholder="Max ₹" min="0" max="5000" value="5000">
+          </div>
         </div>
 
-        <h4>Minimum Rating</h4>
-        <div class="filter-group">
-          <label><input type="radio" name="rating" value="0" checked> Any Rating</label>
-          <label><input type="radio" name="rating" value="4"> 4★ &amp; above</label>
-          <label><input type="radio" name="rating" value="4.5"> 4.5★ &amp; above</label>
+        <div class="filter-card">
+          <div class="filter-title">Customer Rating</div>
+          <label class="filter-option"><input type="radio" name="rating" value="4"><span class="filter-option-label">⭐⭐⭐⭐ & Above</span></label>
+          <label class="filter-option"><input type="radio" name="rating" value="3"><span class="filter-option-label">⭐⭐⭐ & Above</span></label>
+          <label class="filter-option"><input type="radio" name="rating" value="2"><span class="filter-option-label">⭐⭐ & Above</span></label>
         </div>
 
-        <button class="btn btn-outline btn-block" id="clearFilters">Clear Filters</button>
+        <div class="filter-card">
+          <div class="filter-title">Availability</div>
+          <label class="filter-option"><input type="checkbox" id="filter-in-stock"><span class="filter-option-label">In Stock Only</span></label>
+        </div>
       </aside>
 
+      <!-- Products -->
       <div>
-        <div class="toolbar reveal">
-          <span id="resultCount" style="color:var(--slate-2);font-size:.9rem;"></span>
-          <select id="sortSelect" aria-label="Sort products">
-            <option value="popular">Sort: Most Popular</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="rating">Highest Rated</option>
-            <option value="name">Name: A–Z</option>
-          </select>
+        <div id="search-query-display" style="font-size:var(--text-md);font-weight:700;color:var(--clr-text);margin-bottom:var(--space-4)"></div>
+        <div class="shop-toolbar">
+          <p class="shop-count" id="products-count">Loading products...</p>
+          <div class="flex items-center gap-3">
+            <select class="sort-select" id="sort-select" aria-label="Sort products">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Best Rated</option>
+              <option value="discount">Biggest Discount</option>
+              <option value="newest">Newest First</option>
+            </select>
+            <div class="view-toggle">
+              <button class="view-btn active" id="view-grid" aria-label="Grid view">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </button>
+              <button class="view-btn" id="view-list" aria-label="List view">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="product-grid" id="shopGrid"></div>
+        <div class="products-grid" id="products-grid"></div>
+        <nav class="pagination" aria-label="Product pagination">
+          <button class="page-btn" aria-label="Previous page">‹</button>
+          <button class="page-btn active" aria-current="page">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">···</button>
+          <button class="page-btn" aria-label="Next page">›</button>
+        </nav>
       </div>
     </div>
   </div>
-</section>
-
 </main>
 
 <footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="brand">
-          <svg class="logo-mark" width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="logoGradL" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#0F9D58"/><stop offset="100%" stop-color="#1976D2"/>
-      </linearGradient></defs>
-      <circle cx="32" cy="32" r="29" fill="none" stroke="url(#logoGradL)" stroke-width="2.4" stroke-dasharray="4 6"/>
-      <circle cx="32" cy="32" r="23" fill="url(#logoGradL)"/>
-      <path d="M24 32 h16 M32 24 v16" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M20 40 q3 -8 8 -3" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.85"/>
-    </svg>
-          <span><span class="brand-name">Swati Enterprises</span><span class="brand-tag">Your Trusted Medical Store</span></span>
-        </a>
-        <p class="desc">Genuine medicines and healthcare essentials delivered to your doorstep, with pharmacist-verified quality on every order.</p>
-        <div class="social-row">
-          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23 4.9a9.3 9.3 0 0 1-2.6.7 4.5 4.5 0 0 0 2-2.5c-.9.5-1.9.9-2.9 1.1A4.5 4.5 0 0 0 11.9 8.5 12.8 12.8 0 0 1 2.7 3.8a4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.6v.1a4.5 4.5 0 0 0 3.6 4.4 4.5 4.5 0 0 1-2 .1 4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 19.5a12.8 12.8 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6A9.2 9.2 0 0 0 23 4.9z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23 12s0-3.4-.4-5a3 3 0 0 0-2.1-2C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.5.5a3 3 0 0 0-2.1 2C1 8.6 1 12 1 12s0 3.4.4 5a3 3 0 0 0 2.1 2c1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5a3 3 0 0 0 2.1-2c.4-1.6.4-5 .4-5zM9.8 15.5v-7l6 3.5z"/></svg></a>
-        </div>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="categories.html">Categories</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>My Account</h4>
-        <ul class="footer-links">
-          <li><a href="login.html">Login</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="cart.html">My Cart</a></li>
-          <li><a href="checkout.html">Checkout</a></li>
-          <li><a href="contact.html">Track Order</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Get in Touch</h4>
-        <ul class="footer-contact">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 221 Wellness Avenue, Patna, Bihar 800001, India</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2.1z"/></svg> +91 98765 43210</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg> care@swatienterprises.in</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Swati Enterprises. All rights reserved.</span>
-      <div class="legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms &amp; Conditions</a>
-        <a href="#">Shipping Policy</a>
-      </div>
-    </div>
-  </div>
+  <div class="footer-bottom"><div class="container"><div class="footer-bottom-inner"><p class="footer-copy">© 2025 Swati Enterprises. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div></div></div>
 </footer>
-
-<div class="modal-overlay" id="quickViewOverlay">
-  <div class="modal-box">
-    <button class="modal-close" id="quickViewClose" aria-label="Close quick view">✕</button>
-    <div id="quickViewBody"></div>
-  </div>
-</div>
-
-<div class="toast-stack" id="toastStack"></div>
-<button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
-
-<script src="js/products.js"></script>
-<script src="js/wishlist.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/search.js"></script>
-<script src="js/app.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const categories = [...new Set(PRODUCTS.map(p => p.category))];
-  let state = {
-    category: params.get("category") || "",
-    query: params.get("q") || "",
-    maxPrice: 1700,
-    inStockOnly: false,
-    minRating: 0,
-    sort: "popular",
-    offersOnly: params.get("filter") === "offers"
-  };
-
-  // Category filter checkboxes
-  const catGroup = document.getElementById("categoryFilterGroup");
-  catGroup.innerHTML = categories.map(c => `
-    <label><input type="checkbox" class="cat-check" value="${c}" ${c === state.category ? 'checked' : ''}> ${c}</label>
-  `).join("");
-
-  // Quick chips
-  const chips = document.getElementById("quickCategoryChips");
-  chips.innerHTML = ['All', ...categories].map(c => `<button class="chip ${((c==='All'&&!state.category)|| c===state.category) ? 'active':''}" data-chip="${c}">${c}</button>`).join("");
-
-  function selectedCategories(){
-    return [...document.querySelectorAll(".cat-check:checked")].map(el => el.value);
-  }
-
-  function apply(){
-    let list = PRODUCTS.slice();
-    const cats = selectedCategories();
-    if(cats.length) list = list.filter(p => cats.includes(p.category));
-    if(state.query) list = list.filter(p => p.name.toLowerCase().includes(state.query.toLowerCase()) || p.category.toLowerCase().includes(state.query.toLowerCase()));
-    if(state.offersOnly) list = list.filter(p => p.badge);
-    list = list.filter(p => p.price <= state.maxPrice);
-    if(state.inStockOnly) list = list.filter(p => p.stock === "in");
-    if(state.minRating) list = list.filter(p => p.rating >= state.minRating);
-
-    switch(state.sort){
-      case "price-low": list.sort((a,b) => a.price - b.price); break;
-      case "price-high": list.sort((a,b) => b.price - a.price); break;
-      case "rating": list.sort((a,b) => b.rating - a.rating); break;
-      case "name": list.sort((a,b) => a.name.localeCompare(b.name)); break;
-      default: list.sort((a,b) => b.reviews - a.reviews);
-    }
-
-    renderGrid(document.getElementById("shopGrid"), list);
-    document.getElementById("resultCount").textContent = `${list.length} product${list.length !== 1 ? 's' : ''} found`;
-  }
-
-  catGroup.addEventListener("change", apply);
-  chips.addEventListener("click", e => {
-    const btn = e.target.closest("[data-chip]");
-    if(!btn) return;
-    chips.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
-    btn.classList.add("active");
-    document.querySelectorAll(".cat-check").forEach(c => c.checked = (c.value === btn.dataset.chip));
-    state.offersOnly = false;
-    apply();
-  });
-  document.getElementById("priceRange").addEventListener("input", e => {
-    state.maxPrice = Number(e.target.value);
-    document.getElementById("priceRangeVal").textContent = e.target.value;
-    apply();
-  });
-  document.getElementById("inStockOnly").addEventListener("change", e => { state.inStockOnly = e.target.checked; apply(); });
-  document.querySelectorAll("input[name='rating']").forEach(r => r.addEventListener("change", e => { state.minRating = Number(e.target.value); apply(); }));
-  document.getElementById("sortSelect").addEventListener("change", e => { state.sort = e.target.value; apply(); });
-  document.getElementById("clearFilters").addEventListener("click", () => {
-    document.querySelectorAll(".cat-check").forEach(c => c.checked = false);
-    document.getElementById("priceRange").value = 1700;
-    document.getElementById("priceRangeVal").textContent = 1700;
-    document.getElementById("inStockOnly").checked = false;
-    document.querySelector("input[name='rating'][value='0']").checked = true;
-    state = { category:"", query:"", maxPrice:1700, inStockOnly:false, minRating:0, sort: state.sort, offersOnly:false };
-    apply();
-  });
-
-  apply();
-});
-</script>
 </body>
 </html>
